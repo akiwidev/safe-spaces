@@ -13,10 +13,11 @@ charlotte = User.create!(
 charlotte.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/charlotte.jpg')), filename: 'charlotte.jpg', content_type: 'image/jpg')
 
 puts "Creating Charlotte's space..."
-Space.create!(
+space1 = Space.create!(
   address: "1-chōme-35 Nakakasai, Edogawa City, Tokyo 134-0083",
   user: charlotte
 )
+space1.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/spaces/space1.png')), filename: 'space1.png', content_type: 'image/jpg')
 
 puts "Creating Cheri..."
 cheri = User.create!(
@@ -29,10 +30,11 @@ cheri = User.create!(
 cheri.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/cheri.jpg')), filename: 'cheri.jpg', content_type: 'image/jpg')
 
 puts "Creating Cheri's space..."
-Space.create!(
+space2 = Space.create!(
   address: "6-chōme Edogawa, Edogawa City, Tokyo 134-0013",
   user: cheri
 )
+space2.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/spaces/space2.png')), filename: 'space2.png', content_type: 'image/jpg')
 
 puts "Creating Lena..."
 lena = User.create!(
@@ -45,10 +47,11 @@ lena = User.create!(
 lena.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lena.jpg')), filename: 'lena.jpg', content_type: 'image/jpg')
 
 puts "Creating Lena's space..."
-Space.create!(
+space3 = Space.create!(
   address: "1-chōme-17 Nakakasai, Edogawa City, Tokyo 134-0083",
   user: lena
 )
+space3.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/spaces/space3.png')), filename: 'space3.png', content_type: 'image/jpg')
 
 puts "Creating Noemi..."
 noemi = User.create!(
@@ -61,10 +64,11 @@ noemi = User.create!(
 noemi.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/noemi.jpg')), filename: 'noemi.jpg', content_type: 'image/jpg')
 
 puts "Creating Noemi's space..."
-Space.create!(
+space4 = Space.create!(
   address: "2-chōme-15 Higashikasai, Edogawa City, Tokyo 134-0084",
   user: noemi
 )
+space4.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/spaces/space4.png')), filename: 'space4.png', content_type: 'image/jpg')
 
 puts "Creating Ope..."
 ope = User.create!(
@@ -77,10 +81,11 @@ ope = User.create!(
 ope.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/ope.jpg')), filename: 'ope.jpg', content_type: 'image/jpg')
 
 puts "Creating Ope's space..."
-Space.create!(
+space5 = Space.create!(
   address: "2-chōme-2 Nakakasai, Edogawa City, Tokyo 134-0083",
   user: ope
 )
+space5.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/spaces/space5.png')), filename: 'space5.png', content_type: 'image/jpg')
 
 puts "Creating Sae..."
 sae = User.create!(
@@ -93,9 +98,10 @@ sae = User.create!(
 sae.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/sae.jpg')), filename: 'sae.jpg', content_type: 'image/jpg')
 
 puts "Creating Sae's space..."
-Space.create!(
+space6 = Space.create!(
   address: "7-chōme-10 Funabori, Edogawa City, Tokyo 134-0091",
   user: sae
 )
+space6.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/spaces/space6.png')), filename: 'space6.png', content_type: 'image/jpg')
 
 puts "All done! Created #{User.count} users, and #{Space.count} spaces."
