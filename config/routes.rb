@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     resources :messages, only: %i[new create]
   end
   resources :spaces
+  resources :users, only: %i[edit update]
 end

@@ -16,4 +16,15 @@ class SpacesController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def set_space
+    @space = Space.find(params[:id])
+    authorize @space
+  end
+
+  def space_params
+    params.require(:space).permit(:conditions, :available, :address)
+  end
 end
