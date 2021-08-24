@@ -1,2 +1,12 @@
-<h1>Spaces#show</h1>
-<p>Find me in app/views/spaces/show.html.erb</p>
+<div class="container">
+  <div class="space-image">
+    <% if @space.photo.attached? %>
+      <%= image_tag @space.photo %>
+    <% end %>
+  </div>
+  <div class="space-details">
+    <%= @space.conditions %>
+    <%# <%= @space.available %>
+    <%= @space.address %>
+  </div>
+</div>
