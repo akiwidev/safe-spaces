@@ -1,4 +1,10 @@
 class SpacesController < ApplicationController
+  skip_before_action :authenticate_user!
+
+  def index
+    @spaces = policy_scope(Space)
+  end
+
   def new
   end
 
@@ -6,9 +12,6 @@ class SpacesController < ApplicationController
   end
 
   def show
-  end
-
-  def index
   end
 
   def update
