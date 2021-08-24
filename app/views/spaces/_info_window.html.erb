@@ -1,12 +1,14 @@
 <div class="container">
   <div class="space-image">
-    <% if @space.photo.attached? %>
-      <%= image_tag @space.photo %>
+    <% if space.photo.attached? %>
+      <%= image_tag space.photo %>
+    <% else %>
+      <%= image_tag "space1.png" %>
     <% end %>
   </div>
   <div class="space-details">
-    <%= @space.condition %>
-    <%= @space.available %>
-    <%= @space.address %>
+    <%= space.conditions %>
+    <%= space.available %>
+    <%= space.address %>
   </div>
 </div>
