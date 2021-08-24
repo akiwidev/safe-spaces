@@ -1,2 +1,22 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="fullscreen">
+  <div class="content">
+    <h1 class="text-center m-5">Let's go home</h1>
+    <div class="buttons">
+      <%= link_to spaces_path, class: "btn btn-danger m-3" do %>
+      <i class="fas fa-home"></i>
+      <% end %>
+      <button class="btn btn-warning m-5">Go</button>
+      <%= link_to 'Find a safe space now', spaces_path, class: "btn btn-primary m-5"  %>
+    </div>
+  </div>
+</div>
+
+
+  <%# <%= simple_form_for [@space],
+  html: { class: "row row-cols-lg-auto g-3 align-items-center justify-content-center" },
+  wrapper_mappings: {
+    boolean: :inline_boolean
+  } do |f| %>
+  <%# <%= f.input :address, required: true, label: 'Address' %>
+  <%# <%= f.submit "Go", class: "btn-warning col-xs-12 col-sm-12 col-md-12 col-lg-6 p-2 rounded-pill", style: "font-weight: bold; font-size: 20px;" %>
+<%# <% end %>
