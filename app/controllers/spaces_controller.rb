@@ -1,5 +1,4 @@
 class SpacesController < ApplicationController
-  before_action :set_space, only: %i[show]
   def new
   end
 
@@ -7,8 +6,6 @@ class SpacesController < ApplicationController
   end
 
   def show
-    #we want the user to click on a marker to get info about a safe space
-    @user = @space.user
   end
 
   def index
