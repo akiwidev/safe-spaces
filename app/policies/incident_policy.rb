@@ -5,10 +5,6 @@ class IncidentPolicy < ApplicationPolicy
     end
   end
 
-  def new?
-    true
-  end
-
   def create?
     true
   end
