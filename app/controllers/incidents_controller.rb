@@ -1,5 +1,18 @@
 class IncidentsController < ApplicationController
+  def new
+    @incident = Incident.new
+    authorize @incident
+    raise
+  end
+
   def create
+    @incident = Incident.new(incident_params)
+    @incident.user = current_user
+    @space = Space.find(params[:space_id])
+    authorize @incident
+    # if @incident.save
+    #   redirect_to space_path
+    # end
   end
 
   def update
