@@ -1,4 +1,5 @@
 class SpacesController < ApplicationController
+  before_action :set_space, only: %i[show]
   def new
   end
 
@@ -6,6 +7,7 @@ class SpacesController < ApplicationController
   end
 
   def show
+    @user = space.user
   end
 
   def index
