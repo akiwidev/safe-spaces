@@ -4,6 +4,16 @@ class SpacesController < ApplicationController
 
   def index
     @spaces = policy_scope(Space)
+    @spaces_location = Space.where.not(latitude: nil, longitude: nil)
+    @markers = @spaces_location.map do |space|
+      {
+        lat: space.latitude,
+        lng: space.longitude #,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        # Uncomment the above line if you want each of your markers to display a info window when clicked
+        # (you will also need to create the partial "/flats/map_box")
+      }
+    end
   end
 
   def new
