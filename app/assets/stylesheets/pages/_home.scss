@@ -1,1 +1,29 @@
 // Specific CSS for your home-page
+.fullscreen-image {
+  position: fixed;
+  object-fit: fill;
+  z-index: -1;
+    }
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+
+
+.fullscreen {
+    background: url(homepage.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+.content {
+  background: transparent;
+  height: 100vh;
+}
