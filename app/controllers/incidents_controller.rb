@@ -2,7 +2,6 @@ class IncidentsController < ApplicationController
   def new
     @incident = Incident.new
     authorize @incident
-    raise
   end
 
   def create
