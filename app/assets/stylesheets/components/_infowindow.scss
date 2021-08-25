@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+
+body {
+  background-color: grey;
+}
+
+.container {
+  margin-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.profile-card {
+  position: relative;
+  width: 13rem;
+  background-color: white;
+}
+
+.profile-background {
+  width: 12rem;
+  height: 9rem;
+  background-image: linear-gradient(to bottom right, rgb(255, 180, 162), rgb(181, 131, 141));
+  border-radius: 16px 16px 50% 50%;
+  position: absolute;
+}
+
+.profile-header {
+  position: relative;
+  bottom: 15%;
+  width: 12rem;
+}
+
+.profile-image {
+  margin: 0 auto;
+  width: 10rem;
+  height: 10rem;
+  background-size: contain;
+  background-color: black;
+  border: 6px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(10,10,10,0.3);
+}
+
+.profile-avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 4rem;
+  right: 1rem;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(10,10,10,0.3);
+}
+
+.profile-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+.profile-contact {
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    color: #ff565d;
+  }
+}
+
+.profile-body {
+  width: 12rem;
+  margin: 1rem 0;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 0.05rem;
+  line-height: 1.6rem;
+  opacity: 0.8;
+}
+
+.body-intro {
+  border-top: 3px solid rgba(255, 86, 93, 0.4);
+  padding-top: 1em;
+}
+
+.profile-helped {
+  font-weight: bolder;
+  border-bottom: 3px solid #ff565d;
+}
+
+@media (min-width: 992px) {
+  .profile-card {
+    width: 12rem;
+  }
+}

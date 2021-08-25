@@ -1,14 +1,19 @@
-<div class="container">
-  <div class="space-image">
-    <% if space.photo.attached? %>
-      <%= image_tag space.photo %>
-    <% else %>
-      <%= image_tag "space1.png" %>
-    <% end %>
+<div class="profile-card">
+  <div class="profile-background"></div>
+  <div class="profile-header">
+    <div><%= image_tag space.photo, class: "profile-image d-flex justify-content-center" %><%= image_tag space.user.photo, class: "profile-avatar" %></div>
+    <div class="profile-title">
+      <h2><%= space.user.first_name.capitalize %></h2>
+    </div>
+    <div class="profile-contact">
+      <a href="#"><i class="fas fa-phone-alt"></i></a>
+      <a href="#"><i class="far fa-comment-dots"></i></a>
+    </div>
   </div>
-  <div class="space-details">
-    <%= space.conditions %>
-    <%= space.available %>
-    <%= space.address %>
+  <div class="profile-body">
+    <%# <p><%= space.user.first_name.capitalize has helped <span class="profile-helped"><%= space.incidents.count people</span></p> %>
+    <div class="body-intro">
+      <p><%= space.conditions %></p>
+    </div>
   </div>
 </div>
