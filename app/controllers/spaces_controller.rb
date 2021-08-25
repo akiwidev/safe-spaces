@@ -8,8 +8,9 @@ class SpacesController < ApplicationController
     @markers = @spaces_location.map do |space|
       {
         lat: space.latitude,
-        lng: space.longitude #,
-        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        lng: space.longitude, #,
+        #icon: "https://icons-for-free.com/iconfiles/png/512/map+marker+icon-1320166582858325800.png",
+        infoWindow: { content: render_to_string(partial: "/spaces/info_window", locals: { space: space }) },
         # Uncomment the above line if you want each of your markers to display a info window when clicked
         # (you will also need to create the partial "/flats/map_box")
       }
