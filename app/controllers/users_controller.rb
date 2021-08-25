@@ -1,8 +1,14 @@
 class UsersController < ApplicationController
-  def edit
-  end
+  before_action :set_user, only: %i[edit update]
+
+  def edit; end
 
   def update
+    if @user.update(user_params)
+      redirect_to spaces_path, notice: 'Your profile has been updated'
+    else
+      render :edit
+    end
   end
 
   private

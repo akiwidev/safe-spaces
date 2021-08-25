@@ -1,2 +1,9 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div>
+      <h1 class="text-center">Editing Profile</h1>
+      <%= render 'form', user: @user %>
+      <%= link_to 'Back', spaces_path %>
+    </div>
+  </div>
+</div>
