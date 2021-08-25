@@ -1,4 +1,6 @@
 class IncidentsController < ApplicationController
+  before_action :set_incident, only: %i[show]
+
   def new
     @incident = Incident.new
     authorize @incident
