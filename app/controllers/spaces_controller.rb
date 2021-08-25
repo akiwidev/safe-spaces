@@ -23,6 +23,14 @@ class SpacesController < ApplicationController
   end
 
   def create
+    @space = Space.new(space_params)
+    @space.user = current_user
+    authorize @space
+    if @space.save
+      redirect_to spaces_path, notice: 'Space was successfully created.'
+    else
+      render :new
+    end
   end
 
   def show
