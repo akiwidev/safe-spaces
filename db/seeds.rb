@@ -15,7 +15,8 @@ charlotte.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/ch
 puts "Creating Charlotte's space..."
 space1 = Space.create!(
   address: "1-chōme-35 Nakakasai, Edogawa City, Tokyo 134-0083",
-  user: charlotte
+  user: charlotte,
+  conditions: "I live in an apartment block so I'll buzz you in to give you a place to feel a bit safer."
 )
 space1.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/spaces/space1.png')), filename: 'space1.png', content_type: 'image/jpg')
 
@@ -32,7 +33,8 @@ cheri.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/cheri.
 puts "Creating Cheri's space..."
 space2 = Space.create!(
   address: "6-chōme Edogawa, Edogawa City, Tokyo 134-0013",
-  user: cheri
+  user: cheri,
+  conditions: "Safe area! Ring my doorbell and I'll be more than happy to meet you outside."
 )
 space2.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/spaces/space2.png')), filename: 'space2.png', content_type: 'image/jpg')
 
@@ -49,7 +51,8 @@ lena.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lena.jp
 puts "Creating Lena's space..."
 space3 = Space.create!(
   address: "1-chōme-17 Nakakasai, Edogawa City, Tokyo 134-0083",
-  user: lena
+  user: lena,
+  conditions: "Lively area so there's lots of people around. Feel free to climb the stairs to put some space between you and danger."
 )
 space3.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/spaces/space3.png')), filename: 'space3.png', content_type: 'image/jpg')
 
@@ -66,7 +69,8 @@ noemi.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/noemi.
 puts "Creating Noemi's space..."
 space4 = Space.create!(
   address: "2-chōme-15 Higashikasai, Edogawa City, Tokyo 134-0084",
-  user: noemi
+  user: noemi,
+  conditions: "Quiet family area but well lit and lots of visibility, I'll meet you at the entrance."
 )
 space4.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/spaces/space4.png')), filename: 'space4.png', content_type: 'image/jpg')
 
@@ -83,7 +87,8 @@ ope.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/ope.jpg'
 puts "Creating Ope's space..."
 space5 = Space.create!(
   address: "2-chōme-2 Nakakasai, Edogawa City, Tokyo 134-0083",
-  user: ope
+  user: ope,
+  conditions: "I'll let you in my house."
 )
 space5.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/spaces/space5.png')), filename: 'space5.png', content_type: 'image/jpg')
 
@@ -100,7 +105,8 @@ sae.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/sae.jpg'
 puts "Creating Sae's space..."
 space6 = Space.create!(
   address: "7-chōme-10 Funabori, Edogawa City, Tokyo 134-0091",
-  user: sae
+  user: sae,
+  conditions: "You're welcome to come in and take as much time as you need!"
 )
 space6.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/spaces/space6.png')), filename: 'space6.png', content_type: 'image/jpg')
 
