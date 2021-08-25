@@ -9,11 +9,12 @@ class IncidentsController < ApplicationController
   def create
     @incident = Incident.new(incident_params)
     @incident.user = current_user
-    @space = Space.find(params[:space_id])
+    @space = Space.find_by(id: params[:space_id]) || Space.first
     authorize @incident
-    # if @incident.save
-    #   redirect_to space_path
-    # end
+    @incident.space = @space
+    if @incident.save
+      redirect_to incident_path(@incident)
+    end
   end
 
   def update
@@ -22,6 +23,16 @@ class IncidentsController < ApplicationController
   def show
     @user = @incident.user
     @space = @incident.space
+    @markers = [
+      {
+        lat: @space.latitude,
+        lng: @space.longitude,
+        # icon: Cloudinary::Utils.cloudinary_url(space.user.photo.key), #{ width: 50, height: 50, crop: :fill, radius: :max }),
+        infoWindow: { content: render_to_string(partial: "/spaces/info_window", locals: { space: @space }) }
+        # Uncomment the above line if you want each of your markers to display a info window when clicked
+        # (you will also need to create the partial "/flats/map_box")
+      }
+    ]
   end
 
   private
