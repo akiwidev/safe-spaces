@@ -43,7 +43,20 @@ const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
     const popup = new mapboxgl.Popup().setHTML(marker.info_window);
 
-    new mapboxgl.Marker()
+    // Create a HTML element for your custom marker
+    const element = document.createElement('div');
+    element.className = 'marker';
+    element.style.backgroundImage = `url('${marker.image_url}')`;
+    element.style.backgroundSize = 'contain';
+    element.style.width = '40px';
+    element.style.height = '40px';
+    element.style.borderRadius = '50%';
+    element.style.borderStyle = 'solid';
+    element.style.borderWidth = '2px';
+    element.style.borderColor = '#6D6875';
+
+    // Pass the element as an argument to the new marker
+    new mapboxgl.Marker(element)
       .setLngLat([marker.lng, marker.lat])
       .setPopup(popup)
       .addTo(map);
