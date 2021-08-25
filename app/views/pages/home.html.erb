@@ -5,8 +5,15 @@
       <%= link_to spaces_path, class: "btn btn-danger m-3" do %>
       <i class="fas fa-home"></i>
       <% end %>
-      <button class="btn btn-warning m-5">Go</button>
-      <%= link_to 'Find a safe space now', spaces_path, class: "btn btn-danger m-5"  %>
+      <%= form_tag spaces_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Go somewhere else"
+        %>
+        <%= submit_tag "Go", class: "btn btn-success" %>
+      <% end %>
+      <%= link_to 'SOS', spaces_path, class: "btn btn-danger m-5"  %>
     </div>
   </div>
 </div>
