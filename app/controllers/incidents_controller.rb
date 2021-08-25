@@ -18,6 +18,8 @@ class IncidentsController < ApplicationController
   end
 
   def show
+    @user = @incident.user
+    @space = @incident.space
   end
 
   private
