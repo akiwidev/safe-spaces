@@ -1,2 +1,10 @@
-<h1>Spaces#new</h1>
-<p>Find me in app/views/spaces/new.html.erb</p>
+<div class="container form-login">
+  <div class="row justify-content-center">
+    <div class="col-12">
+    <div>
+      <h1 class="mb-3 text-center">New Space</h1>
+      <%= render 'form', space: @space %>
+      <%= link_to 'Back ', spaces_path %>
+    </div>
+  </div>
+</div>
