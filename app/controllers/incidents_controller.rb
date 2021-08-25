@@ -20,7 +20,7 @@ class IncidentsController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = @incident.user
     @space = @incident.space
   end
 
