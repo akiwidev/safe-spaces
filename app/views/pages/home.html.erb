@@ -13,7 +13,10 @@
         %>
         <%= submit_tag "Go", class: "btn btn-success" %>
       <% end %>
-      <%= link_to 'SOS', spaces_path, class: "btn btn-danger m-5"  %>
+      <%= simple_form_for @incident do |f|%>
+      <%= f.input :user_id, as: :hidden, input_html: {value: current_user&.id} %>
+      <%= f.submit 'SOS', class: "btn btn-danger m-5"  %>
+      <% end %>
     </div>
   </div>
 </div>
