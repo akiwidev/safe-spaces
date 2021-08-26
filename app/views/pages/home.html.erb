@@ -11,9 +11,13 @@
             params[:query],
             class: "form-control",
             style: "border-radius: 8px 0 0 8px;",
-            placeholder: "Go somewhere else"
+            placeholder: "Go somewhere else..."
           %>
-          <%= submit_tag "Go", class: "btn btn-success", style: "border-radius: 0px 8px 8px 0px;" %>
+          <%= button_tag class: "btn btn-dark", style: "border-radius: 0px 8px 8px 0px;" do %>
+            <i class="fas fa-walking"></i>
+          <% end %>  
+        <% end %>
+        <%= submit_tag "Go", class: "btn btn-success", style: "border-radius: 0px 8px 8px 0px;" %>
         <% end %>
           <%= simple_form_for @incident do |f|%>
           <%= f.input :user_id, as: :hidden, input_html: {value: current_user&.id}, data: { target: "user-location.link"} %>
@@ -23,12 +27,3 @@
     </div>
   </div>
 </div>
-
-  <%# <%= simple_form_for [@space],
-  html: { class: "row row-cols-lg-auto g-3 align-items-center justify-content-center" },
-  wrapper_mappings: {
-    boolean: :inline_boolean
-  } do |f| %>
-  <%# <%= f.input :address, required: true, label: 'Address' %>
-  <%# <%= f.submit "Go", class: "btn-warning col-xs-12 col-sm-12 col-md-12 col-lg-6 p-2 rounded-pill", style: "font-weight: bold; font-size: 20px;" %>
-<%# <% end %>
