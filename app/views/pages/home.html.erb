@@ -5,13 +5,14 @@
       <%= link_to spaces_path, class: "btn btn-danger m-3" do %>
       <i class="fas fa-home"></i>
       <% end %>
-      <%= form_tag spaces_path, method: :get do %>
+      <%= form_tag spaces_path, class: "d-flex", method: :get do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
+          style: "border-radius: 8px 0 0 8px;",
           placeholder: "Go somewhere else"
         %>
-        <%= submit_tag "Go", class: "btn btn-success" %>
+        <%= submit_tag "Go", class: "btn btn-success", style: "border-radius: 0px 8px 8px 0px;" %>
       <% end %>
       <%= simple_form_for @incident do |f|%>
       <%= f.input :user_id, as: :hidden, input_html: {value: current_user&.id} %>
