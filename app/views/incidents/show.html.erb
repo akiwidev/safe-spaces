@@ -7,12 +7,12 @@
 <div class="card-trip">
   <%= image_tag @space.user.photo, class: "profile-avatar" %>
   <div class="card-trip-infos">
-    <%= link_to '' do %>
-      <i class="fas fa-phone-square-alt"></i>
+    <%= link_to '',  class: "button-circle" do %>
+      <i class="fas fa-phone-alt"></i>
     <% end %>
-    <%= link_to '' do %>
+    <%= link_to '',  class: "button-circle" do %>
       <i class="far fa-comment"></i>
     <% end %>
-    <%= link_to 'Safe', class: "" %>
+    <%= link_to 'Safe',"#", class: "button-circle" %>
   </div>
 </div>
