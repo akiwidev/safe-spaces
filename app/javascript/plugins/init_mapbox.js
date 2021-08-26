@@ -29,8 +29,7 @@ function setupMap(center) {
   const mapElement = document.getElementById('map');
   let directions = new MapboxDirections({
     accessToken: mapElement.dataset.mapboxApiKey
-  }
-  )
+  })
 
   map.addControl(directions, "top-left")
 
