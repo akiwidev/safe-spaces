@@ -1,6 +1,6 @@
 .form-login {
   border: 1px solid rgba(10,10,10,0.1);
-  padding: 4rem;
+  padding: 2rem;
   border-radius: 1rem;
   background: white;
   max-width: 25rem;
@@ -12,6 +12,9 @@
   }
   .btn {
     width: 100%;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    color: white;
+    font-weight: bold;
+    border-radius: 1rem;
   }
 }
