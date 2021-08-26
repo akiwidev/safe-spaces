@@ -4,3 +4,15 @@
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
+<div class="card-trip">
+  <%= image_tag @space.user.photo, class: "profile-avatar" %>
+  <div class="card-trip-infos">
+    <%= link_to '',  class: "button-circle" do %>
+      <i class="fas fa-phone-alt"></i>
+    <% end %>
+    <%= link_to '',  class: "button-circle" do %>
+      <i class="far fa-comment"></i>
+    <% end %>
+    <%= link_to 'Safe', spaces_path, class: "button-circle" %>
+  </div>
+</div>

@@ -6,7 +6,7 @@
 .help-button {
   z-index: 1000;
   position: absolute;
-  margin: 0 auto;
-  left: 45%;
+  transform: translate(-50%, 0);
+  left: 50%;
   bottom: 10%;
 }
