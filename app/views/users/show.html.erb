@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="mt-4">
+    <%# <h1><%= @user.first_name %>
+    <%# <%= @user.last_name</h1> %>
+    <div class="user-container my-4" >
+      <div class="user-image">
+        <%# <% if @user.photo.attached? %>
+        <%= image_tag @user.photo %>
+        <%# <% else %>
+        <%# <%= image_tag 'placeholder-profile.png' %>
+        <%# <% end %>
+      </div>
+      <div class="user-bio mx-3">
+        <p><%= @user.first_name %> <%= @user.last_name %></p>
+        <p><%= @user.phone_num %></p>
+        <% if current_user == @user %>
+          <p><%= link_to 'Edit profile', edit_user_path(@user) %></p>
+        <% end %>
+      </div>
+    </div>
