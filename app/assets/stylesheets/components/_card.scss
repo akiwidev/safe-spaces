@@ -7,13 +7,14 @@
     left: 0;
     width: 100vw;
     height: 100px;
-    border-radius: 8px;
+    border-radius: 8px 8px 0 0;
 
 
   img {
     position: absolute;
-    left: 40%;
+    left: 50%;
     top: -50px;
+    transform: translateX(-50%)
   }
 }
 
