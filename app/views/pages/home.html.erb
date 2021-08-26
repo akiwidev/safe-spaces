@@ -1,33 +1,34 @@
 <div class="fullscreen">
   <div class="content">
-    <h1 class="text-center m-5">Let's go home</h1>
+    <h1 class="text-center m-4">Safe Spaces</h1>
+    <h2 class="text-center mb-3">Getting you home safe.</h2>
     <div class="buttons">
       <%= link_to spaces_path, class: "btn btn-danger m-3" do %>
-      <i class="fas fa-home"></i>
+        <i class="fas fa-home"></i>
       <% end %>
       <%= form_tag spaces_path, class: "d-flex", method: :get do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
           style: "border-radius: 8px 0 0 8px;",
-          placeholder: "Go somewhere else"
+          placeholder: "Go somewhere else..."
         %>
-        <%= submit_tag "Go", class: "btn btn-success", style: "border-radius: 0px 8px 8px 0px;" %>
+        <%= button_tag class: "btn btn-dark", style: "border-radius: 0px 8px 8px 0px;" do %>
+          <i class="fas fa-walking"></i>
+        <% end %>
       <% end %>
       <%= simple_form_for @incident do |f|%>
-      <%= f.input :user_id, as: :hidden, input_html: {value: current_user&.id} %>
-      <%= f.submit 'SOS', class: "btn btn-danger m-5"  %>
+        <%= f.input :user_id, as: :hidden, input_html: {value: current_user&.id} %>
+        <%= f.submit 'Help!', class: "btn btn-danger btn-lg m-5"  %>
       <% end %>
     </div>
   </div>
 </div>
-
-
-  <%# <%= simple_form_for [@space],
+<%# <%= simple_form_for [@space],
   html: { class: "row row-cols-lg-auto g-3 align-items-center justify-content-center" },
   wrapper_mappings: {
     boolean: :inline_boolean
   } do |f| %>
   <%# <%= f.input :address, required: true, label: 'Address' %>
   <%# <%= f.submit "Go", class: "btn-warning col-xs-12 col-sm-12 col-md-12 col-lg-6 p-2 rounded-pill", style: "font-weight: bold; font-size: 20px;" %>
-<%# <% end %>
+  <%# <% end %>

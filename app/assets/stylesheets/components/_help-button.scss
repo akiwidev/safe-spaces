@@ -1,0 +1,12 @@
+.map-container {
+  position: relative;
+  z-index: 1;
+}
+
+.help-button {
+  z-index: 1000;
+  position: absolute;
+  transform: translate(-50%, 0);
+  left: 50%;
+  bottom: 10%;
+}
