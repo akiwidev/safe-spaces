@@ -12,7 +12,7 @@ export default class extends Controller {
 }
 
  errorLocation = () => {
-  this.setupMap([-2.24, 53.48])
+   this.setupMap([139.6981, 35.6415])
 }
 
   setupMap = (center) => {
@@ -38,10 +38,8 @@ export default class extends Controller {
 
  initMapbox = () => {
   const mapElement = document.getElementById('incident_map');
-console.log(mapElement);
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-    console.log("before location")
     navigator.geolocation.getCurrentPosition(this.successLocation, this.errorLocation, {
       enableHighAccuracy: true
     })
