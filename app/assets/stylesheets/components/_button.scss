@@ -1,4 +1,13 @@
-  .button{
-        width: 50px;
-        height: 25px;
+  .button-circle{
+    width: 50px;
+    height: 50;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    background-color: #E5989B;
+    text-shadow: 1px 1px 3px rgba(19, 4, 4, 0.2);
+     box-shadow: 0 0 50px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     }
