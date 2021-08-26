@@ -1,27 +1,28 @@
-<div class="fullscreen">
-  <div class="content">
-    <h1 class="text-center m-5">Let's go home</h1>
-    <div class="buttons">
-      <%= link_to spaces_path, class: "btn btn-danger m-3" do %>
-      <i class="fas fa-home"></i>
-      <% end %>
-      <%= form_tag spaces_path, class: "d-flex", method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          style: "border-radius: 8px 0 0 8px;",
-          placeholder: "Go somewhere else"
-        %>
-        <%= submit_tag "Go", class: "btn btn-success", style: "border-radius: 0px 8px 8px 0px;" %>
-      <% end %>
-      <%= simple_form_for @incident do |f|%>
-      <%= f.input :user_id, as: :hidden, input_html: {value: current_user&.id} %>
-      <%= f.submit 'SOS', class: "btn btn-danger m-5"  %>
-      <% end %>
+<div data-controller="user-location", id="user_location">
+  <div class="fullscreen">
+    <div class="content">
+      <h1 class="text-center m-5">Let's go home</h1>
+      <div class="buttons">
+        <%= link_to space_path(current_user), class: "btn btn-danger m-3"  do %>
+        <i class="fas fa-home" ></i>
+        <% end %>
+        <%= form_tag spaces_path, class: "d-flex", method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            style: "border-radius: 8px 0 0 8px;",
+            placeholder: "Go somewhere else"
+          %>
+          <%= submit_tag "Go", class: "btn btn-success", style: "border-radius: 0px 8px 8px 0px;" %>
+        <% end %>
+          <%= simple_form_for @incident do |f|%>
+          <%= f.input :user_id, as: :hidden, input_html: {value: current_user&.id}, data: { target: "user-location.link"} %>
+          <%= f.submit 'SOS', class: "btn btn-danger m-5" %>
+          <% end %>
+      </div>
     </div>
   </div>
 </div>
-
 
   <%# <%= simple_form_for [@space],
   html: { class: "row row-cols-lg-auto g-3 align-items-center justify-content-center" },

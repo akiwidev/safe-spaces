@@ -22,7 +22,9 @@ class IncidentsController < ApplicationController
 
   def show
     @user = @incident.user
-    @space = @incident.space
+    # @space = @incident.space
+    raise
+    @space = Space.near([params[:lng], params[:lat]], 15).first
     @markers = [
       {
         lat: @space.latitude,
