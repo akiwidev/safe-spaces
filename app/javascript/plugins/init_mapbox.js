@@ -14,8 +14,9 @@ function successLocation(position) {
 
 function errorLocation() {
   // setupMap([-2.24, 53.48])
-  setupMap([139.6981, 35.6415])
+  setupMap([139.7082, 35.6339])
 }
+
 
 function setupMap(center) {
   const map = new mapboxgl.Map({
