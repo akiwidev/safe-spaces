@@ -2,7 +2,11 @@
   <div class="mt-4">
     <div class="user-container my-4" >
       <div class="user-image">
-        <%= image_tag @user.photo %>
+        <% if current_user.photo.attached? %>
+          <%= image_tag @user.photo %>
+        <% else %>
+          <%= image_tag "placeholder-profile.png", style: "width: 10rem; height: 10rem;" %>
+        <% end %>
       </div>
       <div class="user-bio mx-3">
         <p><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></p>
