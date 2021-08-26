@@ -36,6 +36,7 @@ function setupMap(center) {
   const markers = JSON.parse(mapElement.dataset.markers);
   addMarkersToMap(map, markers);
   fitMapToMarkers(map, markers);
+  addUserLocation(center)
 }
 
 const addMarkersToMap = (map, markers) => {
@@ -80,4 +81,11 @@ const initMapbox = () => {
   }
 };
 
+function addUserLocation(position) {
+  document.querySelector(".mapboxgl-ctrl-geocoder input").value = `${position[0]}, ${position[1]}`
+}
+
+function addUserHomeToDestination(position) {
+  document.querySelector(".mapbox-directions-destination input").value = `${position.lng}, ${position.lat}`
+}
 export { initMapbox };
