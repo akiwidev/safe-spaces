@@ -54,6 +54,7 @@ class SpacesController < ApplicationController
         image_url: helpers.asset_url(Cloudinary::Utils.cloudinary_url(space.user.photo.key))
       }
     end
+    @incident = Incident.new
   end
 
   def update
