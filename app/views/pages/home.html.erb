@@ -4,8 +4,10 @@
       <h1 class="text-center m-4">Safe spaces</h1>
       <h2 class="text-center mb-3">Getting you home safe.</h2>
       <div class="buttons">
-        <%= link_to space_path(current_user), class: "btn btn-danger m-3"  do %>
-        <i class="fas fa-home" ></i>
+        <% if user_signed_in? %>
+          <%= link_to space_path(current_user), class: "btn btn-danger m-3"  do %>
+          <i class="fas fa-home" ></i>
+          <% end %>
         <% end %>
         <%= form_tag spaces_path, class: "d-flex", method: :get do %>
           <%= text_field_tag :query,
