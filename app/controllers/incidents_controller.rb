@@ -13,7 +13,7 @@ class IncidentsController < ApplicationController
     authorize @incident
     @incident.space = @space
     if @incident.save
-      redirect_to incident_path(@incident)
+      redirect_to incident_path(@incident, lng: params[:lng], lat: params[:lat])
     end
   end
 
@@ -22,7 +22,8 @@ class IncidentsController < ApplicationController
 
   def show
     @user = @incident.user
-    @space = @incident.space
+    # @space = @incident.space
+    @space = Space.near([params[:lat], params[:lng]], 15).first
     @markers = [
       {
         lat: @space.latitude,
