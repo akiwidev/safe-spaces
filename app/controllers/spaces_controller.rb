@@ -34,8 +34,7 @@ class SpacesController < ApplicationController
   end
 
   def show
-    @space.user = current_user
-    @space = Space.near([params[:lat], params[:lng]], 15).first || Space.first
+    @user = current_user
     @space_address = @space.address
     @markers = [
       {
