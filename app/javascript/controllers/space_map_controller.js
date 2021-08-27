@@ -50,7 +50,8 @@ export default class extends Controller {
     map.addControl(nav)
     const mapElement = document.getElementById('space_map');
     let directions = new MapboxDirections({
-      accessToken: mapElement.dataset.mapboxApiKey
+      accessToken: mapElement.dataset.mapboxApiKey,
+      unit: 'metric',
     })
     const markers = JSON.parse(mapElement.dataset.markers)
     // const space_address = JSON.parse(mapElement.dataset.space_address)
