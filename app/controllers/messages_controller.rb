@@ -1,8 +1,21 @@
 class MessagesController < ApplicationController
   def new
+    @message = Message.new
+    @incident = Incident.find(params[:incident_id])
+    authorize @message
   end
 
   def create
+    @incident = Incident.find(params[:incident_id])
+    @message = Message.new(message_params)
+    @message.incident = @incident
+    @message.user = current_user
+    authorize @message
+    if @message.save
+      redirect_to new_incident_message_path(@incident, anchor: "message-#{@message.id}")
+    else
+      render "incidents/show"
+    end
   end
 
   private
@@ -13,6 +26,6 @@ class MessagesController < ApplicationController
   # end
 
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content, :id)
   end
 end
