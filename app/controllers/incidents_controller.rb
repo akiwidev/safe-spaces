@@ -26,8 +26,8 @@ class IncidentsController < ApplicationController
     @space = @incident.space
     @markers = [
       {
-        lat: @space.latitude,
-        lng: @space.longitude,
+        lat: @incident.space.latitude,
+        lng: @incident.space.longitude,
         # icon: Cloudinary::Utils.cloudinary_url(space.user.photo.key), #{ width: 50, height: 50, crop: :fill, radius: :max }),
         infoWindow: { content: render_to_string(partial: "/spaces/info_window", locals: { space: @space }) }
         # Uncomment the above line if you want each of your markers to display a info window when clicked
