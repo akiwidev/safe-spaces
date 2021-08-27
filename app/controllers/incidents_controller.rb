@@ -34,6 +34,7 @@ class IncidentsController < ApplicationController
         # (you will also need to create the partial "/flats/map_box")
       }
     ]
+    @message = @incident.messages
   end
 
   private
