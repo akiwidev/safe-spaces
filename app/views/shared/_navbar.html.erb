@@ -1,28 +1,24 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to "/", class: "navbar-brand" do %>
     <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
-
+  <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item dropdown">
-          <% if current_user.photo.attached? %>
-            <%= image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", style: "border: 2px solid #B5838D", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% else %>
-            <%= image_tag "placeholder-profile.png", class: "avatar dropdown-toggle", id: "navbarDropdown", style: "border: 2px solid #B5838D", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% end %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
-            <%= link_to "Add a space", new_space_path, class: "dropdown-item" %>
-            <%= link_to "Spaces", spaces_path, class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
+        <li class="form-inline mr-3">
+          <%= link_to "Profile", user_path(current_user), class: "text-decoration-none navi-link", style: "color: black" %>
+        </li>
+        <li class="form-inline mr-3">
+          <%= link_to "Add a space", new_space_path, class: "text-decoration-none navi-link", style: "color: black" %>
+        </li>
+        <li class="form-inline mr-3">
+          <%= link_to "Spaces", spaces_path, class: "text-decoration-none navi-link", style: "color: black" %>
+        </li>
+        <li class="form-inline mr-3">
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "text-decoration-none navi-link", style: "color: black" %>
         </li>
       <% else %>
         <li class="nav-item">
