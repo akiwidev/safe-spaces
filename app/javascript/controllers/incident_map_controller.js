@@ -26,13 +26,20 @@ export default class extends Controller {
   map.addControl(nav)
   const mapElement = document.getElementById('incident_map');
   let directions = new MapboxDirections({
-    accessToken: mapElement.dataset.mapboxApiKey
+    accessToken: mapElement.dataset.mapboxApiKey,
+    // profile: 'mapbox/walking'
   })
 
   const markers = JSON.parse(mapElement.dataset.markers)
   map.addControl(directions, "top-left")
-  this.addUserLocation(center)
-  this.addDestinationLocation(markers[0])
+  directions.setOrigin(`${center[0]}, ${center[1]}`)
+  directions.setDestination(`${markers[0].lng}, ${markers[0].lat}`)
+  // try to find a way to trigger it.
+    setTimeout(() => document.querySelector('#mapbox-directions-profile-walking').click(), 3000)
+  // document.querySelector('#mapbox-directions-profile-walking').click()
+
+  // this.addUserLocation(center)
+  // this.addDestinationLocation(markers[0])
 }
 
 initMapbox = () => {
@@ -47,7 +54,8 @@ initMapbox = () => {
 
 addUserLocation = (position) => {
   document.querySelector(".mapboxgl-ctrl-geocoder input").value = `${position[0]}, ${position[1]}`
-  // document.querySelector(".mapboxgl-ctrl-geocoder input").value.dispatchEvent(new KeyboardEvent('keypress', { 'key': 'space' }));
+  document.querySelector(".mapboxgl-ctrl-geocoder input").value.dispatchEvent(new KeyboardEvent('keyup', { 'key': 'space' }));
+  document.querySelector(".mapboxgl-ctrl-geocoder input").value.dispatchEvent(new KeyboardEvent('keyup', { 'key': 'enter' }));
   // document.querySelector(".mapboxgl-ctrl-geocoder input").value = "Impact HUB Tokyo, 東京都, Tokyo Prefecture 153-0063, Japan"
   // const event = new Event("submit")
   // document.querySelector(".mapboxgl-ctrl-geocoder input").dispatchEvent(event)
