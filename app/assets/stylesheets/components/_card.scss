@@ -1,4 +1,4 @@
-.card-trip {
+.card-footer {
     background: #6D6875;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     z-index: 1000;
@@ -18,7 +18,7 @@
   }
 }
 
-.card-trip .card-trip-infos {
+.card-footer .card-footer-infos {
     padding: 16px;
     display: flex;
     justify-content: space-around;
