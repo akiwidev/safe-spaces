@@ -27,7 +27,7 @@ export default class extends Controller {
   const mapElement = document.getElementById('incident_map');
   let directions = new MapboxDirections({
     accessToken: mapElement.dataset.mapboxApiKey,
-    // profile: 'mapbox/walking'
+    unit: 'metric'
   })
 
   const markers = JSON.parse(mapElement.dataset.markers)
