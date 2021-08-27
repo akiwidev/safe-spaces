@@ -2,18 +2,43 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
 
-  connect() {
+  connect(){
     this.initMapbox()
   }
-  successLocation = (position) => {
+  // This is standard method that when used as a callback function, loses its 'this', to the profit of i.e. line 74's navigation.geolocation. That's why we use .bind, to be able to retain the 'this' of where it's has been called (i.e. this.successlocation - the instance of controller).
+  successLocation(position) {
     this.setupMap([position.coords.longitude, position.coords.latitude])
   }
-
-  errorLocation = () => {
+//  This is an arrow method that keeps it's 'this', when it's passed as a callback function i.e. line 73.
+  errorLocation= () => {
     this.setupMap([139.7082, 35.6339])
   }
 
-  setupMap = (center) => {
+  addSafeSpaceMarkersToMap(map, ssmarkers){
+    ssmarkers.forEach((ssmarker) => {
+      const popup = new mapboxgl.Popup().setHTML(ssmarker.info_window);
+
+      // Create a HTML element for your custom marker
+      const element = document.createElement('div');
+      element.className = 'marker';
+      element.style.backgroundImage = `url('${ssmarker.image_url}')`;
+      element.style.backgroundSize = 'contain';
+      element.style.width = '40px';
+      element.style.height = '40px';
+      element.style.borderRadius = '50%';
+      element.style.borderStyle = 'solid';
+      element.style.borderWidth = '2px';
+      element.style.borderColor = '#6D6875';
+
+      // Pass the element as an argument to the new marker
+      new mapboxgl.Marker(element)
+        .setLngLat([ssmarker.lng, ssmarker.lat])
+        .setPopup(popup)
+        .addTo(map);
+    });
+  }
+
+  setupMap(center){
     const map = new mapboxgl.Map({
       container: "space_map",
       style: "mapbox://styles/mapbox/streets-v11",
@@ -26,26 +51,27 @@ export default class extends Controller {
     const mapElement = document.getElementById('space_map');
     let directions = new MapboxDirections({
       accessToken: mapElement.dataset.mapboxApiKey
-    }
-    )
+    })
     const markers = JSON.parse(mapElement.dataset.markers)
     // const space_address = JSON.parse(mapElement.dataset.space_address)
-    console.log(markers)
     map.addControl(directions, "top-left")
     directions.setOrigin(`${center[0]}, ${center[1]}`)
     directions.setDestination(`${markers[0].lng}, ${markers[0].lat}`)
     // try to find a way to trigger it.
     setTimeout(() => document.querySelector('#mapbox-directions-profile-walking').click(), 3000)
-  //   this.addUserLocation(center)
-  //   this.addDestinationLocation(space_address)
-  //   this.addDestinationLocation(markers[0])
+    //   this.addUserLocation(center)
+    //   this.addDestinationLocation(space_address)
+    //   this.addDestinationLocation(markers[0])
+
+    const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
+    this.addSafeSpaceMarkersToMap(map, ssmarkers)
   }
 
-  initMapbox = () => {
+  initMapbox(){
     const mapElement = document.getElementById('space_map');
     if (mapElement) { // only build a map if there's a div#map to inject into
       mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-      navigator.geolocation.getCurrentPosition(this.successLocation, this.errorLocation, {
+      navigator.geolocation.getCurrentPosition(this.successLocation.bind(this), this.errorLocation, {
         enableHighAccuracy: true
       })
     }

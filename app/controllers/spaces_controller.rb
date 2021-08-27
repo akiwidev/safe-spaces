@@ -44,6 +44,16 @@ class SpacesController < ApplicationController
         image_url: helpers.asset_url(Cloudinary::Utils.cloudinary_url(@space.user.photo.key))
       }
     ]
+    @safe_spaces = policy_scope(Space)
+    @safe_spaces_location = Space.where.not(latitude: nil, longitude: nil, user: current_user)
+    @safe_spaces_markers = @safe_spaces_location.map do |space|
+      {
+        lat: space.latitude,
+        lng: space.longitude,
+        info_window: render_to_string(partial: "/spaces/info_window", locals: { space: space }),
+        image_url: helpers.asset_url(Cloudinary::Utils.cloudinary_url(space.user.photo.key))
+      }
+    end
   end
 
   def update
