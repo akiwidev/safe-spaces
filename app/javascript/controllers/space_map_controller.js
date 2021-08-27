@@ -10,7 +10,7 @@ export default class extends Controller {
     this.setupMap([position.coords.longitude, position.coords.latitude])
   }
 //  This is an arrow method that keeps it's 'this', when it's passed as a callback function i.e. line 73.
-  errorLocation= () => {
+  errorLocation = () => {
     this.setupMap([139.7082, 35.6339])
   }
 
@@ -37,6 +37,12 @@ export default class extends Controller {
         .addTo(map);
     });
   }
+
+  fitMapToMarkers(map, markers){
+    const bounds = new mapboxgl.LngLatBounds();
+    markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
+    map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
+  };
 
   setupMap(center){
     const map = new mapboxgl.Map({
@@ -66,6 +72,10 @@ export default class extends Controller {
 
     const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
     this.addSafeSpaceMarkersToMap(map, ssmarkers)
+
+    this.fitMapToMarkers(map, markers)
+    this.fitMapToMarkers(map, ssmarkers)
+
   }
 
   initMapbox(){
