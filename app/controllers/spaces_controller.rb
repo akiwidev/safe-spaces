@@ -34,7 +34,7 @@ class SpacesController < ApplicationController
   end
 
   def show
-    @space.user = current_user
+    @user = current_user
     @space_address = @space.address
     @markers = [
       {
