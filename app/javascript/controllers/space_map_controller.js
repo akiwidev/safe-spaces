@@ -3,11 +3,9 @@ import { Controller } from "stimulus"
 export default class extends Controller {
 
   connect() {
-    console.log(this.element)
     this.initMapbox()
   }
   successLocation = (position) => {
-    console.log(position)
     this.setupMap([position.coords.longitude, position.coords.latitude])
   }
 
@@ -34,9 +32,13 @@ export default class extends Controller {
     // const space_address = JSON.parse(mapElement.dataset.space_address)
     console.log(markers)
     map.addControl(directions, "top-left")
-    this.addUserLocation(center)
-    // this.addDestinationLocation(space_address)
-    this.addDestinationLocation(markers[0])
+    directions.setOrigin(`${center[0]}, ${center[1]}`)
+    directions.setDestination(`${markers[0].lng}, ${markers[0].lat}`)
+    // try to find a way to trigger it.
+    setTimeout(() => document.querySelector('#mapbox-directions-profile-walking').click(), 3000)
+  //   this.addUserLocation(center)
+  //   this.addDestinationLocation(space_address)
+  //   this.addDestinationLocation(markers[0])
   }
 
   initMapbox = () => {
