@@ -47,6 +47,7 @@ initMapbox = () => {
 
 addUserLocation = (position) => {
   document.querySelector(".mapboxgl-ctrl-geocoder input").value = `${position[0]}, ${position[1]}`
+  // document.querySelector(".mapboxgl-ctrl-geocoder input").value.dispatchEvent(new KeyboardEvent('keypress', { 'key': 'space' }));
   // document.querySelector(".mapboxgl-ctrl-geocoder input").value = "Impact HUB Tokyo, 東京都, Tokyo Prefecture 153-0063, Japan"
   // const event = new Event("submit")
   // document.querySelector(".mapboxgl-ctrl-geocoder input").dispatchEvent(event)
