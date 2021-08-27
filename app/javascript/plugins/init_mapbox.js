@@ -30,7 +30,8 @@ function setupMap(center) {
   map.addControl(nav)
   const mapElement = document.getElementById('map');
   let directions = new MapboxDirections({
-    accessToken: mapElement.dataset.mapboxApiKey
+    accessToken: mapElement.dataset.mapboxApiKey,
+    unit: 'metric'
   })
 
   map.addControl(directions, "top-left")
