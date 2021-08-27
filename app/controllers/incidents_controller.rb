@@ -28,10 +28,8 @@ class IncidentsController < ApplicationController
       {
         lat: @incident.space.latitude,
         lng: @incident.space.longitude,
-        # icon: Cloudinary::Utils.cloudinary_url(space.user.photo.key), #{ width: 50, height: 50, crop: :fill, radius: :max }),
-        infoWindow: { content: render_to_string(partial: "/spaces/info_window", locals: { space: @space }) }
-        # Uncomment the above line if you want each of your markers to display a info window when clicked
-        # (you will also need to create the partial "/flats/map_box")
+        infoWindow: { content: render_to_string(partial: "/spaces/info_window", locals: { space: @space }) },
+        image_url: helpers.asset_url(Cloudinary::Utils.cloudinary_url(@space.user.photo.key))
       }
     ]
   end
