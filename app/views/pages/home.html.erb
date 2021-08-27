@@ -1,12 +1,20 @@
 <div data-controller="user-location", id="user_location">
   <div class="fullscreen">
+    <div class="hero mt-3 d-flex align-items-center">
+      <div class="circle"></div>
+      <div><%= image_tag "reading.png", class: "hero-image" %></div>
+    </div>
+    <div>
+      <div class="hero-text">
+        <h1 class="text-center m-4">Safe spaces</h1>
+        <h2 class="text-center mb-3">Getting you home safe.</h2>
+      </div>
+    </div>
     <div class="content">
-      <h1 class="text-center m-4">Safe spaces</h1>
-      <h2 class="text-center mb-3">Getting you home safe.</h2>
       <div class="buttons">
         <% if user_signed_in? %>
           <%= link_to space_path(current_user.spaces.first), class: "btn btn-danger m-3"  do %>
-            <i class="fas fa-home" ></i>
+            <i class="fas fa-home"></i>
           <% end %>
         <% end %>
         <%= form_tag spaces_path, class: "d-flex", method: :get do %>
