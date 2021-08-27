@@ -14,7 +14,7 @@ charlotte.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/ch
 
 puts "Creating Charlotte's space..."
 space1 = Space.create!(
-  address: "1-chōme-35 Nakakasai, Edogawa City, Tokyo 134-0083",
+  address: "Japan, Tokyo Prefecture東京都目黒区下目黒5丁目13番8",
   user: charlotte,
   conditions: "I live in an apartment block so I'll buzz you in to give you a place to feel a bit safer."
 )
@@ -32,7 +32,7 @@ cheri.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/cheri.
 
 puts "Creating Cheri's space..."
 space2 = Space.create!(
-  address: "6-chōme Edogawa, Edogawa City, Tokyo 134-0013",
+  address: "Japan, Tokyo Prefecture東京都品川区旗の台6丁目5番43",
   user: cheri,
   conditions: "Safe area! Ring my doorbell and I'll be more than happy to meet you outside."
 )
@@ -50,7 +50,7 @@ lena.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/lena.jp
 
 puts "Creating Lena's space..."
 space3 = Space.create!(
-  address: "1-chōme-17 Nakakasai, Edogawa City, Tokyo 134-0083",
+  address: "Japan, Tokyo Prefecture東京都品川区西五反田4丁目27番10",
   user: lena,
   conditions: "Lively area so there's lots of people around. Feel free to climb the stairs to put some space between you and danger."
 )
@@ -68,7 +68,7 @@ noemi.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/noemi.
 
 puts "Creating Noemi's space..."
 space4 = Space.create!(
-  address: "2-chōme-15 Higashikasai, Edogawa City, Tokyo 134-0084",
+  address: "Japan, Tokyo Prefecture東京都品川区小山台1丁目4番2",
   user: noemi,
   conditions: "Quiet family area but well lit and lots of visibility, I'll meet you at the entrance."
 )
@@ -86,7 +86,7 @@ ope.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/ope.jpg'
 
 puts "Creating Ope's space..."
 space5 = Space.create!(
-  address: "2-chōme-2 Nakakasai, Edogawa City, Tokyo 134-0083",
+  address: "Japan, Tokyo Prefecture東京都品川区荏原2丁目10番9",
   user: ope,
   conditions: "I'll let you in my house."
 )
@@ -104,7 +104,7 @@ sae.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/sae.jpg'
 
 puts "Creating Sae's space..."
 space6 = Space.create!(
-  address: "7-chōme-10 Funabori, Edogawa City, Tokyo 134-0091",
+  address: "Japan, Tokyo Prefecture東京都品川区西中延3丁目7番3",
   user: sae,
   conditions: "You're welcome to come in and take as much time as you need!"
 )
