@@ -28,6 +28,7 @@ export default class extends Controller {
   let directions = new MapboxDirections({
     accessToken: mapElement.dataset.mapboxApiKey,
     // profile: 'mapbox/walking'
+    interactive: false
   })
 
   const markers = JSON.parse(mapElement.dataset.markers)
