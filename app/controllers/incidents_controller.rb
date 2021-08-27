@@ -9,7 +9,7 @@ class IncidentsController < ApplicationController
   def create
     @incident = Incident.new(incident_params)
     @incident.user = current_user
-    @space = Space.find_by(id: params[:space_id]) || Space.first
+    @space = Space.near([params[:lat], params[:lng]], 15).first || Space.first
     authorize @incident
     @incident.space = @space
     if @incident.save
@@ -23,7 +23,7 @@ class IncidentsController < ApplicationController
   def show
     @user = @incident.user
     # @space = @incident.space
-    @space = Space.near([params[:lat], params[:lng]], 15).first
+    @space = @incident.space
     @markers = [
       {
         lat: @space.latitude,
