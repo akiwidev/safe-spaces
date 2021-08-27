@@ -1,17 +1,20 @@
 // Specific CSS for your home-page
+body, html {
+  background: #F4EBE6;
+}
+
 .fullscreen-image {
   position: fixed;
   object-fit: fill;
   z-index: -1;
     }
+
 .buttons {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
 }
-
-
 
 .fullscreen {
     // background: url(homepage.jpg) no-repeat center center fixed;
