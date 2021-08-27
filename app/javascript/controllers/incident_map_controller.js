@@ -40,6 +40,17 @@ export default class extends Controller {
 
   // this.addUserLocation(center)
   // this.addDestinationLocation(markers[0])
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        // When active the map will receive updates to the device's location as it changes.
+        trackUserLocation: true,
+        // Draw an arrow next to the location dot to indicate which direction the device is heading.
+        showUserHeading: true
+      })
+    );
 }
 
 initMapbox = () => {
@@ -47,7 +58,9 @@ initMapbox = () => {
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     navigator.geolocation.getCurrentPosition(this.successLocation, this.errorLocation, {
-      enableHighAccuracy: true
+      enableHighAccuracy: true,
+      trackUserLocation: true,
+      showUserHeading: true
     })
   }
 };
