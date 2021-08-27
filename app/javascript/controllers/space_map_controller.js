@@ -25,7 +25,8 @@ export default class extends Controller {
     map.addControl(nav)
     const mapElement = document.getElementById('space_map');
     let directions = new MapboxDirections({
-      accessToken: mapElement.dataset.mapboxApiKey
+      accessToken: mapElement.dataset.mapboxApiKey,
+      interactive: false
     }
     )
     const markers = JSON.parse(mapElement.dataset.markers)
