@@ -10,21 +10,9 @@
     <%= link_to '',  class: "button-circle" do %>
       <i class="fas fa-phone-alt"></i>
     <% end %>
-    <%= link_to '',  class: "button-circle" do %>
+    <%= link_to new_incident_message_path(@incident),  class: "button-circle" do %>
       <i class="far fa-comment"></i>
     <% end %>
     <%= link_to 'Safe', spaces_path, class: "button-circle" %>
   </div>
-</div>
-<h1>#<%= @incident.user %></h1>
-<div id="messages" data-incident-id="<%= @incident.id %>">
-  <% @incident.messages.each do |message| %>
-    <div class="message-container" id="message-<%= message.id %>">
-      <i class="author">
-        <span><%= message.user.first_name %></span>
-        <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-      </i>
-      <p><%= message.content %></p>
-    </div>
-  <% end %>
 </div>
