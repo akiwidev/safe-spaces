@@ -15,8 +15,7 @@
 
 .fullscreen {
     // background: url(homepage.jpg) no-repeat center center fixed;
-    background: rgb(229,152,155);
-    background: linear-gradient(0deg, rgba(229,152,155,1) 32%, rgba(255,180,162,1) 100%);
+    background: #F4EBE6;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -27,5 +26,5 @@
 
 .content {
   background: transparent;
-  height: 100vh;
+  height: 30vh;
 }
