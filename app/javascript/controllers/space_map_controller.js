@@ -12,7 +12,7 @@ export default class extends Controller {
   }
 
   errorLocation = () => {
-    this.setupMap([-2.24, 53.48])
+    this.setupMap([139.7082, 35.6339])
   }
 
   setupMap = (center) => {
