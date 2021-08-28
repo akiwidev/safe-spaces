@@ -4,13 +4,11 @@ export default class extends Controller {
   static targets = ['link', 'lng', 'lat']
 
   connect() {
-    console.log(this.linkTarget)
     this.initMapbox()
   }
 
 
   successLocation = (position) => {
-    console.log(position)
     window.localStorage.setItem('lng', position.coords.longitude);
     window.localStorage.setItem('lat', position.coords.latitude);
     this.lngTarget.value = position.coords.longitude;
