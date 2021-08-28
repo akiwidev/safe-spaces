@@ -38,7 +38,13 @@ class SpacesController < ApplicationController
     set_space_markers
     @incident = Incident.new
 
-    @kobanmarkers
+    @kobans = policy_scope(Koban)
+    @kobanmarkers = @kobans.map do |koban|
+      {
+        lat: koban.latitude,
+        lng: koban.longitude,
+      }
+    end
   end
 
   def update

@@ -14,6 +14,13 @@ export default class extends Controller {
     this.setupMap([139.7082, 35.6339])
   }
 
+  addKobanMarkersToMap(map, kobanmarkers){
+    const element = document.createElement('div');
+    new mapboxgl.Marker(element)
+      .setLngLat([kobanmarkers.lng, kobanmarkers.lat])
+      .addTo(map);
+  }
+
   addSafeSpaceMarkersToMap(map, ssmarkers){
     ssmarkers.forEach((ssmarker) => {
       const popup = new mapboxgl.Popup().setHTML(ssmarker.info_window);
@@ -81,6 +88,9 @@ export default class extends Controller {
 
     const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
     this.addSafeSpaceMarkersToMap(map, ssmarkers)
+
+    const kobanmarkers = JSON.parse(mapElement.dataset.kobanmarkers)
+    this.addKobanMarkersToMap(map, kobanmarkers)
   }
 
   initMapbox(){
