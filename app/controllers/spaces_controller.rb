@@ -37,6 +37,8 @@ class SpacesController < ApplicationController
     ]
     set_space_markers
     @incident = Incident.new
+
+    @kobanmarkers
   end
 
   def update
