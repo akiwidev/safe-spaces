@@ -1,6 +1,7 @@
 puts "Getting rid of previous seeds..."
 Incident.destroy_all
 User.destroy_all
+Koban.destroy_all
 
 puts "Creating Charlotte..."
 

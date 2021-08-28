@@ -15,10 +15,20 @@ export default class extends Controller {
   }
 
   addKobanMarkersToMap(map, kobanmarkers){
-    const element = document.createElement('div');
-    new mapboxgl.Marker(element)
-      .setLngLat([kobanmarkers.lng, kobanmarkers.lat])
-      .addTo(map);
+    kobanmarkers.forEach((kobanmarker) => {
+      const popup = new mapboxgl.Popup().setHTML(kobanmarker.info_window);
+
+      const element = document.createElement('div');
+      element.className = 'kobanmarker';
+      element.style.backgroundImage = `url('${kobanmarker.image_url}')`;
+      element.style.width = '35px';
+      element.style.height = '35px';
+
+      new mapboxgl.Marker(element)
+        .setLngLat([ kobanmarker.lng, kobanmarker.lat ])
+        .setPopup(popup)
+        .addTo(map);
+    });
   }
 
   addSafeSpaceMarkersToMap(map, ssmarkers){
@@ -59,7 +69,7 @@ export default class extends Controller {
     let directions = new MapboxDirections({
       accessToken: mapElement.dataset.mapboxApiKey,
 
-      interactive: true,
+      interactive: false,
        unit: 'metric'
     }
     )

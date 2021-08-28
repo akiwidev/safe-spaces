@@ -39,10 +39,12 @@ class SpacesController < ApplicationController
     @incident = Incident.new
 
     @kobans = policy_scope(Koban)
-    @kobanmarkers = @kobans.map do |koban|
+    @koban_markers = @kobans.map do |koban|
       {
         lat: koban.latitude,
         lng: koban.longitude,
+        infoWindow: { content: render_to_string(partial: "/spaces/koban_info_window", locals: { koban: koban }) },
+        image_url: helpers.asset_url('police2.png')
       }
     end
   end
