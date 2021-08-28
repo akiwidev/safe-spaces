@@ -1,1 +1,3 @@
-<h2><%= koban.name.capitalize %></h2>
+<div class="koban-container m-2">
+  <p class="koban-info-window"><%= koban.name.split.map(&:capitalize).join(' ') %></p>
+</div>
