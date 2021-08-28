@@ -52,13 +52,10 @@ export default class extends Controller {
     let directions = new MapboxDirections({
       accessToken: mapElement.dataset.mapboxApiKey,
 
-      interactive: false,
+      interactive: true,
        unit: 'metric'
     }
     )
-
-     
-  
 
     const markers = JSON.parse(mapElement.dataset.markers)
     // const space_address = JSON.parse(mapElement.dataset.space_address)

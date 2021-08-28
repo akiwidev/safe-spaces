@@ -111,4 +111,38 @@ space6 = Space.create!(
 )
 space6.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/spaces/space6.png')), filename: 'space6.png', content_type: 'image/jpg')
 
-puts "All done! Created #{User.count} users, and #{Space.count} spaces."
+puts "Creating police station seeds..."
+Koban.create!(
+  name: "Meguro Ekimae Police Box",
+  address: "だるま鮨, 上大崎2-15-19, 東京都, Tokyo Prefecture 141-0021, Japan"
+)
+Koban.create!(
+  name: "Shimomeguro Police Box",
+  address: "Japan, Tokyo Prefecture東京都目黒区下目黒1丁目6番18"
+)
+Koban.create!(
+  name: "Aburamen Police Box",
+  address: "Japan, Tokyo Prefecture東京都目黒区目黒4丁目26番7"
+)
+Koban.create!(
+  name: "Honcho Area Safety Center",
+  address: "Japan, Tokyo Prefecture東京都目黒区目黒本町5丁目15番4"
+)
+Koban.create!(
+  name: "Metropolitan Police Ebara Police Station",
+  address: "Japan, Tokyo Prefecture東京都品川区西中延1丁目3番24"
+)
+Koban.create!(
+  name: "Ebara Police Station",
+  address: "Japan, Tokyo Prefecture東京都品川区荏原6丁目19番10"
+)
+Koban.create!(
+  name: "Edo Misaka Police Station",
+  address: "Japan, Tokyo Prefecture東京都品川区荏原7丁目6番7"
+)
+Koban.create!(
+  name: "Sensoku Sub Police Station",
+  address: "Japan, Tokyo Prefecture東京都品川区小山7丁目12番3"
+)
+
+puts "All done! Created #{User.count} users, #{Space.count} spaces, and #{Koban.count} kobans."
