@@ -1,0 +1,13 @@
+.koban-container{
+  max-height: 75px;
+  max-width: 75px;
+  display: flex;
+  align-items: center;
+}
+
+.koban-info-window{
+  font: $body-font;
+  font-size: .8rem;
+  text-align: center;
+  justify-content: center;
+}

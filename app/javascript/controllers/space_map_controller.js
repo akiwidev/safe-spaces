@@ -14,6 +14,23 @@ export default class extends Controller {
     this.setupMap([139.7082, 35.6339])
   }
 
+  addKobanMarkersToMap(map, kobanmarkers){
+    kobanmarkers.forEach((kobanmarker) => {
+      const popup = new mapboxgl.Popup().setHTML(kobanmarker.info_window);
+
+      const element = document.createElement('div');
+      element.className = 'kobanmarker';
+      element.style.backgroundImage = `url('${kobanmarker.image_url}')`;
+      element.style.width = '35px';
+      element.style.height = '35px';
+
+      new mapboxgl.Marker(element)
+        .setLngLat([ kobanmarker.lng, kobanmarker.lat ])
+        .setPopup(popup)
+        .addTo(map);
+    });
+  }
+
   addSafeSpaceMarkersToMap(map, ssmarkers){
     ssmarkers.forEach((ssmarker) => {
       const popup = new mapboxgl.Popup().setHTML(ssmarker.info_window);
@@ -64,9 +81,6 @@ export default class extends Controller {
     }
     )
 
-     
-  
-
     const markers = JSON.parse(mapElement.dataset.markers)
     // const space_address = JSON.parse(mapElement.dataset.space_address)
     map.addControl(directions, "top-left")
@@ -94,9 +108,11 @@ export default class extends Controller {
     const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
     this.addSafeSpaceMarkersToMap(map, ssmarkers)
 
+    const kobanmarkers = JSON.parse(mapElement.dataset.kobanmarkers)
+    this.addKobanMarkersToMap(map, kobanmarkers)
+    
     this.fitMapToMarkers(map, markers)
     this.fitMapToMarkers(map, ssmarkers)
-
   }
 
   initMapbox(){
