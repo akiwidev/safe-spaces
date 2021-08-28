@@ -10,7 +10,7 @@ export default class extends Controller {
     this.setupMap([position.coords.longitude, position.coords.latitude])
   }
 //  This is an arrow method that keeps it's 'this', when it's passed as a callback function i.e. line 73.
-  errorLocation= () => {
+  errorLocation = () => {
     this.setupMap([139.7082, 35.6339])
   }
 
@@ -55,13 +55,20 @@ export default class extends Controller {
     });
   }
 
-  setupMap(center){
+  fitMapToMarkers(map, markers){
+    const bounds = new mapboxgl.LngLatBounds();
+    markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
+    map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
+  };
+
+  setupMap = (center) => {
     const map = new mapboxgl.Map({
       container: "space_map",
       style: "mapbox://styles/mapbox/streets-v11",
       center: center,
       zoom: 15
     })
+    console.log(center)
 
     const nav = new mapboxgl.NavigationControl()
     map.addControl(nav)
@@ -77,6 +84,8 @@ export default class extends Controller {
     const markers = JSON.parse(mapElement.dataset.markers)
     // const space_address = JSON.parse(mapElement.dataset.space_address)
     map.addControl(directions, "top-left")
+    console.log(center);
+    console.log(markers)
     directions.setOrigin(`${center[0]}, ${center[1]}`)
     directions.setDestination(`${markers[0].lng}, ${markers[0].lat}`)
     // try to find a way to trigger it.
@@ -101,6 +110,9 @@ export default class extends Controller {
 
     const kobanmarkers = JSON.parse(mapElement.dataset.kobanmarkers)
     this.addKobanMarkersToMap(map, kobanmarkers)
+    
+    this.fitMapToMarkers(map, markers)
+    this.fitMapToMarkers(map, ssmarkers)
   }
 
   initMapbox(){
