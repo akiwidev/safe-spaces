@@ -12,6 +12,10 @@ class MessagesController < ApplicationController
     @message.user = current_user
     authorize @message
     if @message.save
+      IncidentChannel.broadcast_to(
+  @incident,
+  render_to_string(partial: "message", locals: { message: @message })
+)
       redirect_to new_incident_message_path(@incident, anchor: "message-#{@message.id}")
     else
       render "incidents/show"
