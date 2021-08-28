@@ -27,7 +27,12 @@ export default class extends Controller {
   const mapElement = document.getElementById('incident_map');
   let directions = new MapboxDirections({
     accessToken: mapElement.dataset.mapboxApiKey,
+
+    // profile: 'mapbox/walking'
+    interactive: false,
+
     unit: 'metric'
+
   })
 
   const markers = JSON.parse(mapElement.dataset.markers)
@@ -40,6 +45,17 @@ export default class extends Controller {
 
   // this.addUserLocation(center)
   // this.addDestinationLocation(markers[0])
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        // When active the map will receive updates to the device's location as it changes.
+        trackUserLocation: true,
+        // Draw an arrow next to the location dot to indicate which direction the device is heading.
+        showUserHeading: true
+      })
+    );
 }
 
 initMapbox = () => {

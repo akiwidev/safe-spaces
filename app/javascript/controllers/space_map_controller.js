@@ -58,8 +58,15 @@ export default class extends Controller {
     const mapElement = document.getElementById('space_map');
     let directions = new MapboxDirections({
       accessToken: mapElement.dataset.mapboxApiKey,
-      unit: 'metric',
-    })
+
+      interactive: false,
+       unit: 'metric'
+    }
+    )
+
+     
+  
+
     const markers = JSON.parse(mapElement.dataset.markers)
     // const space_address = JSON.parse(mapElement.dataset.space_address)
     map.addControl(directions, "top-left")
@@ -72,6 +79,17 @@ export default class extends Controller {
     //   this.addUserLocation(center)
     //   this.addDestinationLocation(space_address)
     //   this.addDestinationLocation(markers[0])
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        // When active the map will receive updates to the device's location as it changes.
+        trackUserLocation: true,
+        // Draw an arrow next to the location dot to indicate which direction the device is heading.
+        showUserHeading: true
+      })
+    );
 
     const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
     this.addSafeSpaceMarkersToMap(map, ssmarkers)

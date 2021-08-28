@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Bellota+Text:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+.hero {
+  height: 40vh;
+  position: relative;
+}
+
+.circle {
+  position: relative;
+  width: 17rem;
+  height: 17rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFB4A2;
+  border-radius: 50%;
+}
+
+.hero-image {
+  width: 20rem;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+}
+
+.hero-text {
+  background: transparent;
+  position: relative;
+  z-index: 1;
+
+  h1 {
+    font-family: 'Bellota Text', cursive;
+    font-size: 3.5rem;
+    font-weight: bold;
+    background: linear-gradient(transparent 30%, #E5989B 10%, #E5989B 90%, transparent 90%);
+    background-position-x: 50%;
+    color: #323232;
+  }
+
+  h2 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.25rem;
+    color: #6D6875;
+  }
+}
