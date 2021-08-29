@@ -28,6 +28,15 @@ body, html {
 }
 
 .content {
+  display: flex;
   background: transparent;
   height: 30vh;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-height: 668px) {
+  .content {
+    height: 29.4vh;
+  }
 }

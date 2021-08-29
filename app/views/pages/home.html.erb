@@ -6,25 +6,26 @@
     </div>
     <div>
       <div class="hero-text">
-        <h1 class="text-center m-4">Safe spaces</h1>
+        <h1 class="text-center m-4">Safe Spaces</h1>
         <h2 class="text-center mb-3">Getting you home safe.</h2>
       </div>
     </div>
     <div class="content">
       <div class="buttons">
         <% if user_signed_in? %>
-          <%= link_to space_path(current_user.spaces.first), class: "btn btn-danger m-3"  do %>
-            <i class="fas fa-home"></i>
+          <%= link_to space_path(current_user.spaces.first), class: "home-btn"  do %>
+            <p>Go home <i class="fas fa-home"></i></p>
           <% end %>
+          <div class="mt-1"><h4>or...</h4></div>
         <% end %>
-        <%= form_tag spaces_path, class: "d-flex", method: :get do %>
+        <%= form_tag spaces_path, class: "d-flex", style: "width: 18rem", method: :get do %>
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            style: "border-radius: 8px 0 0 8px;",
-            placeholder: "Go somewhere else..."
+            style: "border-radius: 0 0 0 8px;",
+            placeholder: "Enter an address..."
           %>
-          <%= button_tag class: "btn btn-dark", style: "border-radius: 0px 8px 8px 0px;" do %>
+          <%= button_tag class: "btn btn-dark", style: "border-radius: 0 0 8px 0;" do %>
             <i class="fas fa-walking"></i>
           <% end %>
         <% end %>
@@ -32,7 +33,7 @@
           <%= f.input :user_id, as: :hidden, input_html: {value: current_user&.id } %>
           <%= hidden_field_tag :lng, "", "data-user-location-target": "lng" %>
           <%= hidden_field_tag :lat, "", "data-user-location-target": "lat"   %>
-          <%= f.submit 'Help!', class: "btn btn-danger btn-lg m-5" %>
+          <%= f.submit 'I need help now!', class: "btn btn-danger btn-lg help-btn" %>
           <% end %>
       </div>
     </div>
