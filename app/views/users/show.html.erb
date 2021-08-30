@@ -35,9 +35,7 @@
                   <%= image_tag "spaces/home-placeholder.png", class: "card-img-top" %>
                 <% end %>
                 <div class="card-body pb-0">
-                  <small class="card-title"><%= space.address %></small>
-                  <p class="card-text mt-2 pt-2 border-top"><%= space.conditions %></p>
-                  <div class="d-flex justify-content-between border-top pt-3">
+                  <div class="d-flex justify-content-between border-bottom pt-1">
                     <% if current_user == @user %>
                       <%= simple_form_for space, namespace: "space-#{space.id}", remote: true do |f| %>
                         <%= f.input :available, input_html: { :onclick => "this.form.submit()", class: "toggle" }, label: 'Available?' %>
@@ -48,6 +46,8 @@
                       </div>
                     <% end %>
                   </div>
+                  <div class="pt-2"><small class="card-title mt-1"><%= space.address %></small></div>
+                  <p class="card-text mt-2 py-3 border-top"><%= space.conditions %></p>
                 </div>
               </div>
             </div>
