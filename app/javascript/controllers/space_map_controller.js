@@ -93,18 +93,19 @@ export default class extends Controller {
     //   this.addUserLocation(center)
     //   this.addDestinationLocation(space_address)
     //   this.addDestinationLocation(markers[0])
-    map.addControl(
-      new mapboxgl.GeolocateControl({
-        positionOptions: {
-          enableHighAccuracy: true
-        },
-        // When active the map will receive updates to the device's location as it changes.
-        trackUserLocation: true,
-        // Draw an arrow next to the location dot to indicate which direction the device is heading.
-        showUserHeading: true
-      })
-    );
-    if (mapElement.dataset.ssmarkers) {
+    
+    // Initialize the geolocate control.
+    const geolocate = new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true
+    });
+    // Add the control to the map.
+    map.addControl(geolocate);
+    // map.on('load', () => {
+    //   geolocate.trigger();
+    // });
 
       const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
       this.addSafeSpaceMarkersToMap(map, ssmarkers)
