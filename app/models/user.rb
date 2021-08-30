@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :messages_as_sender, class_name: "message", foreign_key: :sender_id
   has_many :messages_as_receiver, class_name: "message", foreign_key: :receiver_id
   has_one_attached :photo
+  has_many :notifications, as: :recipient
 
   validates :first_name, :last_name, :phone_num, presence: true
 end
