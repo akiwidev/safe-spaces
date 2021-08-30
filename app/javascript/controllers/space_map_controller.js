@@ -93,6 +93,7 @@ export default class extends Controller {
     //   this.addUserLocation(center)
     //   this.addDestinationLocation(space_address)
     //   this.addDestinationLocation(markers[0])
+    
     // Initialize the geolocate control.
     const geolocate = new mapboxgl.GeolocateControl({
       positionOptions: {
@@ -106,8 +107,9 @@ export default class extends Controller {
     //   geolocate.trigger();
     // });
 
-    const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
-    this.addSafeSpaceMarkersToMap(map, ssmarkers)
+      const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
+      this.addSafeSpaceMarkersToMap(map, ssmarkers)
+    }
 
     const kobanmarkers = JSON.parse(mapElement.dataset.kobanmarkers)
     this.addKobanMarkersToMap(map, kobanmarkers)
