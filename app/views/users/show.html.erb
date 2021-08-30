@@ -1,20 +1,59 @@
 <div class="container">
-  <div class="mt-4">
-    <div class="user-container my-4" >
+  <div class="user-container" >
+    <div class="user-card">
       <div class="user-image">
         <% if current_user.photo.attached? %>
           <%= image_tag @user.photo %>
         <% else %>
-          <%= image_tag "placeholder-profile.png", style: "width: 10rem; height: 10rem;" %>
+          <%= image_tag "placeholder-profile.png" %>
         <% end %>
       </div>
-      <div class="user-bio mx-3">
-        <p><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></p>
-        <p><%= @user.phone_num %></p>
+      <div class="user-bio text-center">
+        <h3><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h3>
         <p><%= @user.bio %></p>
-        <% if current_user == @user %>
-          <p><%= link_to 'Edit profile', edit_user_path(@user) %></p>
-          <p><%= link_to 'Back', '/' %></p>
-        <% end %>
+        <div class="d-flex justify-content-between px-3">
+          <% if current_user == @user %>
+            <p><%= link_to 'Edit profile', edit_user_path(@user) %></p>
+            <p><%= link_to 'Back', '/' %></p>
+          <% end %>
+        </div>
       </div>
     </div>
+
+    <div class="container user-spaces mt-3 d-flex flex-column">
+      <div class="text-center">
+        <h2>My Spaces</h2>
+      </div>
+      <div class="row">
+        <div class="card-deck">
+          <% @user.spaces.each do |space| %>
+            <div class="col-sm-12 col-md-6 col-lg-4 d-flex flex-column align-items-center">
+              <div class="card p-0 my-3 card-spaces" style="border-radius: 0.5rem;">
+                <% if space.photo.attached? %>
+                  <%= image_tag space.photo, class: "card-img-top" %>
+                <% else %>
+                  <%= image_tag "spaces/home-placeholder.png", class: "card-img-top" %>
+                <% end %>
+                <div class="card-body pb-0">
+                  <small class="card-title"><%= space.address %></small>
+                  <p class="card-text mt-2 pt-2 border-top"><%= space.conditions %></p>
+                  <div class="d-flex justify-content-between border-top pt-3">
+                    <% if current_user == @user %>
+                      <%= simple_form_for space, namespace: "space-#{space.id}", remote: true do |f| %>
+                        <%= f.input :available, input_html: { onclick: "Rails.fire(this.form, 'submit')", class: "toggle" }, label: 'Available?' %>
+                      <% end %>
+                      <div class="d-flex">
+                        <p><%= link_to ('<i class="fas fa-edit"></i>').html_safe, edit_space_path(space), class: "pr-3" %></p>
+                        <p><%= link_to ('<i class="fas fa-trash-alt"></i>').html_safe, space_path(space), method: :delete, data: { confirm: 'Delete booking?' } %></p>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
