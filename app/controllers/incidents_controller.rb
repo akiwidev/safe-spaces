@@ -1,5 +1,5 @@
 class IncidentsController < ApplicationController
-  before_action :set_incident, only: %i[show]
+  before_action :set_incident, only: %i[show edit]
 
   def new
     @incident = Incident.new
@@ -20,8 +20,6 @@ class IncidentsController < ApplicationController
     end
   end
 
-  def update
-  end
 
   def show
     @user = @incident.user
@@ -36,6 +34,17 @@ class IncidentsController < ApplicationController
       }
     ]
     @message = @incident.messages
+  end
+
+  def edit
+  end
+
+  def update
+    if @incident.update(incident_params)
+      redirect_to edit_incident_path(@incident)
+    else
+      render :show
+    end
   end
 
   private
