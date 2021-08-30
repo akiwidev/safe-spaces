@@ -17,9 +17,10 @@
 .user-image {
   display: flex;
   justify-content: center;
+  width: 80%;
 
   img {
-    width: 80%;
+    width: 100%;
     border: 0.25rem solid white;
     border-radius: 1rem 1rem 0 0;
   }
@@ -64,11 +65,13 @@
   .user-image {
     img {
       border-radius: 1rem;
+      width: 80%;
     }
   }
   
   .user-bio {
     border-radius: 1rem;
     box-shadow: 0px 4px 8px rgba(10,10,10,0.2);
+    width: 80%;
   }
 }
