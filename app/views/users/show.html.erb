@@ -1,20 +1,21 @@
 <div class="container">
-  <div class="mt-4">
-    <div class="user-container my-4" >
-      <div class="user-image">
-        <% if current_user.photo.attached? %>
-          <%= image_tag @user.photo %>
-        <% else %>
-          <%= image_tag "placeholder-profile.png", style: "width: 10rem; height: 10rem;" %>
-        <% end %>
-      </div>
-      <div class="user-bio mx-3">
-        <p><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></p>
-        <p><%= @user.phone_num %></p>
-        <p><%= @user.bio %></p>
+  <div class="user-container" >
+    <div class="user-image">
+      <% if current_user.photo.attached? %>
+        <%= image_tag @user.photo %>
+      <% else %>
+        <%= image_tag "placeholder-profile.png" %>
+      <% end %>
+    </div>
+    <div class="user-bio text-center">
+      <h3><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h3>
+      <p><%= @user.bio %></p>
+      <div class="d-flex justify-content-between">
         <% if current_user == @user %>
           <p><%= link_to 'Edit profile', edit_user_path(@user) %></p>
           <p><%= link_to 'Back', '/' %></p>
         <% end %>
       </div>
     </div>
+  </div>
+</div>
