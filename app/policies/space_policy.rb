@@ -17,4 +17,18 @@ class SpacePolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def update?
+    true
+  end
+
+  def edit?
+    true
+  end
+
+  private
+
+  def user_is_owner?
+    user == record
+  end
 end

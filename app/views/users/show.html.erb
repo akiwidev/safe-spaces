@@ -17,5 +17,32 @@
         <% end %>
       </div>
     </div>
+    <div class="user-spaces mt-3">
+      <div class="card-group">
+        <% @user.spaces.each do |space| %>
+          <div class="card m-3" style="width: 18rem; border-radius: 0.5rem;">
+            <% if space.photo.attached? %>
+              <%= image_tag space.photo, class: "card-img-top" %>
+            <% else %>
+              <%= image_tag "spaces/home-placeholder.png", class: "card-img-top" %>
+            <% end %>
+            <div class="card-body pb-0">
+              <small class="card-title"><%= space.address %></small>
+              <p class="card-text mt-2 pt-2 border-top"><%= space.conditions %></p>
+              <div class="d-flex justify-content-between border-top pt-3">
+                <% if current_user == @user %>
+                  <%= simple_form_for space do |f| %>
+                    <%= f.input :available, input_html: { class: "toggle" }, label: 'Available?' %>
+                  <% end %>
+                  <p><%= link_to ('<i class="fas fa-edit"></i>').html_safe, edit_space_path(space) %></p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
+
+

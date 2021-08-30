@@ -1,1 +1,15 @@
-
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <%= simple_form_for @space do |f| %>
+      <div>
+        <%= f.input :address, label: 'Address' %>
+        <%= f.input :conditions, label: 'Conditions' %>
+        <%= f.input :available, input_html: { class: "toggle" }, label: 'Make this space available?' %>
+        <%= f.input :photo, as: :file, label: 'Add a photo' %>
+      </div>
+      <div>
+        <%= f.submit 'Update Space', class: 'btn btn-warning' %>
+      </div>
+    <% end %>
+  </div>
+</div>

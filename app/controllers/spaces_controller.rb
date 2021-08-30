@@ -1,5 +1,5 @@
 class SpacesController < ApplicationController
-  before_action :set_space, only: %i[show]
+  before_action :set_space, only: %i[show edit update]
   before_action :require_login, only: %i[index]
   skip_before_action :authenticate_user!, only: %i[index show]
 
@@ -49,7 +49,15 @@ class SpacesController < ApplicationController
     end
   end
 
+  def edit; end
+
   def update
+    @user = current_user
+    if @space.update(space_params)
+      redirect_to user_path(@user), notice: 'Your space has been updated'
+    else
+      render :edit
+    end
   end
 
   def destroy
