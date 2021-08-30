@@ -4,6 +4,7 @@ import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-direct
 window.MapboxDirections = MapboxDirections
 import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
 import 'mapbox-gl/dist/mapbox-gl.css';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 // const MapboxDirections = require('@mapbox/mapbox-gl-directions');
 
 
@@ -81,6 +82,10 @@ const initMapbox = () => {
     navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
       enableHighAccuracy: true
     })
+    map.addControl(new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl
+    }));
   }
 };
 
