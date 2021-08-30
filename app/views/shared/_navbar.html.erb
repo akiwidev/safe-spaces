@@ -13,6 +13,9 @@
         </li>
         <li class="form-inline mr-3">
           <%= link_to "Add a space", new_space_path, class: "text-decoration-none navi-link", style: "color: black" %>
+        <li class="form-inline mr-3"><%= link_to notifications_path, class: "text-decoration-none navi-link", style: "color: black" do %>
+        <i class="far fa-bell"></i><%= Notification.where(recipient: current_user).count %>
+        <% end %>
         </li>
         <li class="form-inline mr-3">
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "text-decoration-none navi-link", style: "color: black" %>

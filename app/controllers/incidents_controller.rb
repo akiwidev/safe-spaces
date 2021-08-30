@@ -12,7 +12,10 @@ class IncidentsController < ApplicationController
     @space = Space.near([params[:lat], params[:lng]], 100).first || Space.first
     authorize @incident
     @incident.space = @space
+
     if @incident.save
+      @notification = CommentNotification.with(incident: @incident)
+      @notification.deliver(@space.user)
       redirect_to incident_path(@incident, lng: params[:lng], lat: params[:lat])
     end
   end
