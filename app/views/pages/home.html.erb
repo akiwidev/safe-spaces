@@ -13,10 +13,12 @@
     <div class="content">
       <div class="buttons">
         <% if user_signed_in? %>
-          <%= link_to space_path(current_user.spaces.first), class: "home-btn"  do %>
-            <p>Go home <i class="fas fa-home"></i></p>
+          <%= link_to space_path(current_user.spaces.first), class: "home-btn text-decoration-none text-info"  do %>
+            <p class="text-decoration-none">Go home <i class="fas fa-home"></i></p>
           <% end %>
-          <div class="mt-1"><h4>or...</h4></div>
+          <div class="mt-1">
+            <h4>or</h4>
+          </div>
         <% end %>
         <%= form_tag spaces_path, class: "d-flex", style: "width: 18rem", method: :get do %>
           <%= text_field_tag :query,
@@ -29,12 +31,12 @@
             <i class="fas fa-walking"></i>
           <% end %>
         <% end %>
-          <%= simple_form_for @incident, html: {"data-user-location-target": "link"} do |f|%>
+        <%= simple_form_for @incident, html: {"data-user-location-target": "link"} do |f|%>
           <%= f.input :user_id, as: :hidden, input_html: {value: current_user&.id } %>
           <%= hidden_field_tag :lng, "", "data-user-location-target": "lng" %>
           <%= hidden_field_tag :lat, "", "data-user-location-target": "lat"   %>
           <%= f.submit 'I need help now!', class: "btn btn-danger btn-lg help-btn" %>
-          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
