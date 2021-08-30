@@ -18,7 +18,7 @@ class CommentNotification < Noticed::Base
   # Define helper methods to make rendering easier.
   #
   def message
-    "#{params[:incident].user.first_name} needs your help!"
+    "#{params[:incident].user.first_name.capitalize} needs your help!"
   end
   #
   def url
