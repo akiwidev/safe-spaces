@@ -27,7 +27,7 @@
       <div class="row">
         <div class="card-deck">
           <% @user.spaces.each do |space| %>
-            <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column align-items-center">
+            <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column align-items-center mx-auto">
               <div class="card p-0 my-3 card-spaces" style="border-radius: 0.5rem;">
                 <% if space.photo.attached? %>
                   <%= image_tag space.photo, class: "card-img-top" %>
