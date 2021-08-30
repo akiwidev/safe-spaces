@@ -6,13 +6,18 @@
 ></div>
 <div class="card-footer">
   <%= image_tag @space.user.photo, class: "profile-avatar" %>
-  <div class="card-footer-infos">
+  <div class="card-footer-infos" data-controller="show-on-click">
     <%= link_to '',  class: "button-circle" do %>
       <i class="fas fa-phone-alt"></i>
     <% end %>
-    <%= link_to new_incident_message_path(@incident),  class: "button-circle" do %>
+    <%= button_tag data: {
+      action: "click->show-on-click#toggle"
+    }, class: "button-circle" do %>
       <i class="far fa-comment"></i>
     <% end %>
     <%= link_to 'Safe', edit_incident_path(@incident), class: "button-circle" %>
+    <div data-show-on-click-target ="hiddenElement">
+      <%= render 'messages/new'%>
+    </div>
   </div>
 </div>

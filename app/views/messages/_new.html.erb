@@ -1,4 +1,4 @@
-<div class="container d-flex flex-column" style="background: white; width: 70%; padding: 2rem; border-radius: 1rem;">
+<div class="new-message-modal container d-flex flex-column" >
   <h1>Chat</h1>
   <div id="messages" data-incident-id="<%= @incident.id %>">
     <% @incident.messages.each do |message| %>
@@ -11,7 +11,8 @@
       </div>
     <% end %>
   </div>
-  <%= simple_form_for [ @incident, @message ], remote: true do |f| %>
+  <%= simple_form_for [ @incident, @message ],
+    remote: true do |f| %>
     <%= f.input :content, label: false, placeholder: "Message" %>
     <%= f.submit %>
   <% end %>
