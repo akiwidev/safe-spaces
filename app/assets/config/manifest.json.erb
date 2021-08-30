@@ -1,25 +1,25 @@
 {
-  "background_color": "#B5838D",
-  "description": "A community to help women get home safe",
-  "display": "fullscreen",
- "name": "Safe spaces",
-  "icons": [
-    <% files = Dir.entries(Rails.root.join("app/assets/images/icons/")).select {|f| !File.directory? f
+"background_color": "#E23664",
+"description": "A community to help women get home safe",
+"display": "fullscreen",
+"name": "Safe spaces",
+"icons": [
+<% files = Dir.entries(Rails.root.join("app/assets/images/icons/")).select {|f| !File.directory? f
     } %>
-    <% files.each_with_index do |file, index| %>
-      <% match = file.match(/.+-(?<size>\d{
+<% files.each_with_index do |file, index| %>
+  <% match = file.match(/.+-(?<size>\d{
       2,
       3
     }x\d{
       2,
       3
     }).png/) %>
-      {
-      "src": "<%= image_path "icons/#{file
+  {
+  "src": "<%= image_path "icons/#{file
       }" %>",
-      "sizes": "<%= match && match[:size] %>",
-      "type": "image/png"
-    }<%= "," unless (files.size - 1) == index %>
-    <% end %>
-  ]
+  "sizes": "<%= match && match[:size] %>",
+  "type": "image/png"
+  }<%= "," unless (files.size - 1) == index %>
+<% end %>
+]
 }
