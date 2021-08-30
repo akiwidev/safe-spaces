@@ -9,7 +9,7 @@ class IncidentsController < ApplicationController
   def create
     @incident = Incident.new(incident_params)
     @incident.user = current_user
-    @space = Space.near([params[:lat], params[:lng]], 15).first || Space.first
+    @space = Space.near([params[:lat], params[:lng]], 100).first || Space.first
     authorize @incident
     @incident.space = @space
     if @incident.save
