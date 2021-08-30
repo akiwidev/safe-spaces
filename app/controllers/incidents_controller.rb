@@ -17,8 +17,6 @@ class IncidentsController < ApplicationController
     end
   end
 
-  def update
-  end
 
   def show
     @user = @incident.user
@@ -33,6 +31,14 @@ class IncidentsController < ApplicationController
       }
     ]
     @message = @incident.messages
+  end
+
+  def update
+    if @incident.update(incident_params)
+      redirect_to incident_path(@incident)
+    else
+      render :show
+    end
   end
 
   private
