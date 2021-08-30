@@ -40,7 +40,7 @@
                   <div class="d-flex justify-content-between border-top pt-3">
                     <% if current_user == @user %>
                       <%= simple_form_for space, namespace: "space-#{space.id}", remote: true do |f| %>
-                        <%= f.input :available, input_html: { onclick: "Rails.fire(this.form, 'submit')", class: "toggle" }, label: 'Available?' %>
+                        <%= f.input :available, input_html: { :onclick => "this.form.submit()", class: "toggle" }, label: 'Available?' %>
                       <% end %>
                       <div class="d-flex">
                         <p><%= link_to ('<i class="fas fa-edit"></i>').html_safe, edit_space_path(space), class: "pr-3" %></p>

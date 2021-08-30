@@ -54,19 +54,13 @@ class SpacesController < ApplicationController
 
   def update
     @user = current_user
-    # if @space.update(space_params)
-    #   redirect_to user_path(@user), notice: 'Your space has been updated'
-    # else
-    #   render :edit
-    # end
-
     respond_to do |format|
       if @space.update(space_params)
         format.html { redirect_to user_path(@user), notice: 'Your space has been updated' }
-        format.js # Follow the classic Rails flow and look for a create.json view
+        format.js
       else
         format.html { render :edit }
-        format.js # Follow the classic Rails flow and look for a create.json view
+        format.js
       end
     end
   end
