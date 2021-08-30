@@ -1,5 +1,5 @@
 class SpacesController < ApplicationController
-  before_action :set_space, only: %i[show edit update]
+  before_action :set_space, only: %i[show edit update destroy]
   before_action :require_login, only: %i[index]
   skip_before_action :authenticate_user!, only: %i[index show]
 
@@ -18,7 +18,7 @@ class SpacesController < ApplicationController
     @space.user = current_user
     authorize @space
     if @space.save
-      redirect_to spaces_path, notice: 'Space was successfully created.'
+      redirect_to user_path(current_user), notice: 'Space was successfully created.'
     else
       render :new
     end
@@ -53,14 +53,28 @@ class SpacesController < ApplicationController
 
   def update
     @user = current_user
-    if @space.update(space_params)
-      redirect_to user_path(@user), notice: 'Your space has been updated'
-    else
-      render :edit
+    # if @space.update(space_params)
+    #   redirect_to user_path(@user), notice: 'Your space has been updated'
+    # else
+    #   render :edit
+    # end
+
+    respond_to do |format|
+      if @space.update(space_params)
+        format.html { redirect_to user_path(@user), notice: 'Your space has been updated' }
+        format.js # Follow the classic Rails flow and look for a create.json view
+      else
+        format.html { render :edit }
+        format.js # Follow the classic Rails flow and look for a create.json view
+      end
     end
   end
 
   def destroy
+    @user = current_user
+    authorize @space
+    @space.destroy
+    redirect_to user_path(@user), notice: 'Your space was successfully removed'
   end
 
   private

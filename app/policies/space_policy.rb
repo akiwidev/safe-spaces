@@ -26,6 +26,10 @@ class SpacePolicy < ApplicationPolicy
     true
   end
 
+  def destroy?
+    true
+  end
+
   private
 
   def user_is_owner?
