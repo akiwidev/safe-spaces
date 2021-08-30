@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   end
   resources :spaces
   resources :users, only: %i[show edit update]
-  resources :notifications, only: %i[index]
+  resources :notifications, only: %i[index show]
 end
