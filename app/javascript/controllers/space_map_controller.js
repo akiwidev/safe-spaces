@@ -104,13 +104,15 @@ export default class extends Controller {
         showUserHeading: true
       })
     );
+    if (mapElement.dataset.ssmarkers) {
 
-    const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
-    this.addSafeSpaceMarkersToMap(map, ssmarkers)
+      const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
+      this.addSafeSpaceMarkersToMap(map, ssmarkers)
+    }
 
     const kobanmarkers = JSON.parse(mapElement.dataset.kobanmarkers)
     this.addKobanMarkersToMap(map, kobanmarkers)
-    
+
     this.fitMapToMarkers(map, markers)
     this.fitMapToMarkers(map, ssmarkers)
   }
