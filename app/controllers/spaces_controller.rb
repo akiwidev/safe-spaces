@@ -4,6 +4,15 @@ class SpacesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
+    if params[:query].present?
+      coordinates = Geocoder.search(params[:query]).first.data["center"]
+      @markers = [
+        {
+          lng: coordinates[0],
+          lat: coordinates[1]
+        }
+      ]
+    end
     set_space_markers
     @incident = Incident.new
   end
