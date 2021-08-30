@@ -69,31 +69,50 @@ export default class extends Controller {
       zoom: 15
     })
     console.log(center)
-
-    const nav = new mapboxgl.NavigationControl()
-    map.addControl(nav)
     const mapElement = document.getElementById('space_map');
-    let directions = new MapboxDirections({
-      accessToken: mapElement.dataset.mapboxApiKey,
+    map.on("load", () => {
+      let directions = new MapboxDirections({
+        accessToken: mapElement.dataset.mapboxApiKey,
 
-      interactive: false,
-       unit: 'metric'
-    }
-    )
+        interactive: false,
+         unit: 'metric'
+      }
+      )
 
-    const markers = JSON.parse(mapElement.dataset.markers)
-    // const space_address = JSON.parse(mapElement.dataset.space_address)
-    map.addControl(directions, "top-left")
-    console.log(center);
-    console.log(markers)
-    directions.setOrigin(`${center[0]}, ${center[1]}`)
-    directions.setDestination(`${markers[0].lng}, ${markers[0].lat}`)
+      const markers = JSON.parse(mapElement.dataset.markers)
+      // const space_address = JSON.parse(mapElement.dataset.space_address)
+      map.addControl(directions, "top-left")
+      directions.setOrigin(center)
+      directions.setDestination([markers[0].lng, markers[0].lat])
+
+      this.fitMapToMarkers(map, [
+        markers[0],
+        {
+          lng: center[0],
+          lat: center[1],
+        }
+      ])
+      map.on("idle", () => {
+        const mapElement = document.getElementById("space_map");
+        mapElement.style.opacity = 1;
+        document.querySelector(".loader").style.display = "none";
+      });
+      this.clickInterval = setInterval(() => {
+        const el = document.getElementById("mapbox-directions-profile-walking");
+        if (el) {
+          el.click();
+          clearInterval(this.clickInterval);
+        }
+      }, 100);
+    })
+    // const nav = new mapboxgl.NavigationControl()
+    // map.addControl(nav)
     // try to find a way to trigger it.
-    setTimeout(() => document.querySelector('#mapbox-directions-profile-walking').click(), 3000)
+    // setTimeout(() => document.querySelector('#mapbox-directions-profile-walking').click(), 3000)
     //   this.addUserLocation(center)
     //   this.addDestinationLocation(space_address)
     //   this.addDestinationLocation(markers[0])
-    
+
     // Initialize the geolocate control.
     const geolocate = new mapboxgl.GeolocateControl({
       positionOptions: {
@@ -107,15 +126,14 @@ export default class extends Controller {
     //   geolocate.trigger();
     // });
 
-      const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
-      this.addSafeSpaceMarkersToMap(map, ssmarkers)
-    }
+    const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
+    this.addSafeSpaceMarkersToMap(map, ssmarkers)
 
     const kobanmarkers = JSON.parse(mapElement.dataset.kobanmarkers)
     this.addKobanMarkersToMap(map, kobanmarkers)
 
-    this.fitMapToMarkers(map, markers)
-    this.fitMapToMarkers(map, ssmarkers)
+    // this.fitMapToMarkers(map, markers)
+    // this.fitMapToMarkers(map, ssmarkers)
   }
 
   initMapbox(){

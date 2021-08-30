@@ -1,7 +1,7 @@
-<%# <% binding.pry %>
+<div class="loader">Loading...</div>
 <div data-controller="space-map"
   id="space_map"
-  style="width: 100%; height: calc(100vh - 66px);"
+  style="width: 100%; height: calc(100vh - 66px); opacity: 0; transition: .3s"
   data-markers="<%= @markers.to_json %>"
   data-ssmarkers="<%= @space_markers.to_json %>"
   data-kobanmarkers="<%= @koban_markers.to_json %>"
