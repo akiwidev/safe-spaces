@@ -5,6 +5,10 @@ class IncidentPolicy < ApplicationPolicy
     end
   end
 
+  def update?
+    user == record.user || user == record.space.user
+  end
+
   def create?
     true
   end
