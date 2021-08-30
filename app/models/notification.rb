@@ -9,4 +9,11 @@ class Notification < ApplicationRecord
 
   end
 
+  # def message
+  #   "message"
+  # end
+  # #
+  # def url
+  #   incident_path(incident)
+  # end
 end
