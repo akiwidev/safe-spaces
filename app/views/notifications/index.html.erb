@@ -1,4 +1,7 @@
-<div class="container">
+
   <h1>Notifications</h1>
-  <p><%= @notifications %></p>
-</div>
+
+  <% @notifications.each do |notification| %>
+  <p><%= notification.recipient.email %></p>
+  <p><%= link_to notification.to_notification.message, notification.to_notification.url%></p>
+  <% end %>

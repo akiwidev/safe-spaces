@@ -1,7 +1,7 @@
 class NotificationPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      user.notifications
     end
   end
 end

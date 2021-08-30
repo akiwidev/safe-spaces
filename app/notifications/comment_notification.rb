@@ -17,12 +17,12 @@ class CommentNotification < Noticed::Base
 
   # Define helper methods to make rendering easier.
   #
-  # def message
-  #   t(".message")
-  # end
+  def message
+    "#{params[:incident].user.first_name} needs your help!"
+  end
   #
-  # def url
-  #   post_path(params[:post])
-  # end
+  def url
+    incident_path(params[:incident])
+  end
 
 end
