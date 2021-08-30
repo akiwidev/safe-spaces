@@ -4,7 +4,17 @@ class SpacesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
+    if params[:query].present?
+      coordinates = Geocoder.search(params[:query]).first.data["center"]
+      @markers = [
+        {
+          lng: coordinates[0],
+          lat: coordinates[1]
+        }
+      ]
+    end
     set_space_markers
+    set_koban_markers
     @incident = Incident.new
   end
 
@@ -36,17 +46,8 @@ class SpacesController < ApplicationController
       }
     ]
     set_space_markers
+    set_koban_markers
     @incident = Incident.new
-
-    @kobans = policy_scope(Koban)
-    @koban_markers = @kobans.map do |koban|
-      {
-        lat: koban.latitude,
-        lng: koban.longitude,
-        info_window: render_to_string(partial: "/spaces/koban_info_window", locals: { koban: koban }),
-        image_url: helpers.asset_url('police2.png')
-      }
-    end
   end
 
   def edit; end
@@ -92,6 +93,18 @@ class SpacesController < ApplicationController
     unless signed_in?
       flash[:error] = "You must be logged in to access this section"
       redirect_to new_user_session_url # halts request cycle
+    end
+  end
+
+  def set_koban_markers
+    @kobans = policy_scope(Koban)
+    @koban_markers = @kobans.map do |koban|
+      {
+        lat: koban.latitude,
+        lng: koban.longitude,
+        info_window: render_to_string(partial: "/spaces/koban_info_window", locals: { koban: koban }),
+        image_url: helpers.asset_url('police2.png')
+      }
     end
   end
 
