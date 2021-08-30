@@ -102,9 +102,9 @@ export default class extends Controller {
     });
     // Add the control to the map.
     map.addControl(geolocate);
-    map.on('load', () => {
-      geolocate.trigger();
-    });
+    // map.on('load', () => {
+    //   geolocate.trigger();
+    // });
 
     const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
     this.addSafeSpaceMarkersToMap(map, ssmarkers)
