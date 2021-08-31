@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
   @incident,
   render_to_string(partial: "message", locals: { message: @message })
 )
-      redirect_to new_incident_message_path(@incident, anchor: "message-#{@message.id}")
+      # redirect_to incident_path(@incident, anchor: "message-#{@message.id}")
     else
       render "incidents/show"
     end

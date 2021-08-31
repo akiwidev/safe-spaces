@@ -3,6 +3,7 @@ class SpacesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
+    @user = current_user
     if params[:query].present?
       coordinates = Geocoder.search(params[:query]).first.data["center"]
       @markers = [
@@ -15,6 +16,17 @@ class SpacesController < ApplicationController
     set_space_markers
     set_koban_markers
     @incident = Incident.new
+    @spaces = Space.near([coordinates[1], coordinates[0]], 15).where(available: true).reject do |space|
+      @user.spaces.find do |user_space|
+        space == user_space
+      end
+    end
+    @space = @user.spaces[0]
+    @notification = SpaceNotification.with(space: @space)
+    # @notification.deliver(User.all)
+    @spaces.each do |space|
+      @notification.deliver(User.where(spaces: space))
+    end
   end
 
   def new
@@ -47,6 +59,16 @@ class SpacesController < ApplicationController
     set_space_markers
     set_koban_markers
     @incident = Incident.new
+    @spaces = Space.near([@space.latitude, @space.longitude], 15).where(available: true).reject do |space|
+      @user.spaces.find do |user_space|
+        space == user_space
+      end
+    end
+    @notification = SpaceNotification.with(space: @space)
+    # @notification.deliver(User.all)
+    @spaces.each do |space|
+      @notification.deliver(User.where(spaces: space))
+    end
   end
 
   def edit; end
@@ -102,9 +124,15 @@ class SpacesController < ApplicationController
   end
 
   def set_space_markers
+    @user = current_user
     @spaces = policy_scope(Space)
     @spaces_location = Space.where.not(latitude: nil, longitude: nil)
-    @space_markers = @spaces_location.map do |space|
+    @spaces_available = @spaces_location.where(available: true).reject do |space|
+      @user.spaces.find do |user_space|
+        space == user_space
+      end
+    end
+    @space_markers = @spaces_available.map do |space|
       {
         lat: space.latitude,
         lng: space.longitude,

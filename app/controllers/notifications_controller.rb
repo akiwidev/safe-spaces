@@ -7,8 +7,12 @@ class NotificationsController < ApplicationController
 
   def show
     @notification = Notification.find(params[:id])
-    authorize @notification
     @notification.mark_as_read!
-    redirect_to @notification.to_notification.url
+    authorize @notification
+    if @notification.type == "CommentNotification"
+      redirect_to @notification.to_notification.url
+    else
+      redirect_to user_path(@notification.recipient)
+    end
   end
 end
