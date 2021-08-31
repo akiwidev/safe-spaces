@@ -3,6 +3,7 @@ class SpacesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
+    @user = current_user
     if params[:query].present?
       coordinates = Geocoder.search(params[:query]).first.data["center"]
       @markers = [
@@ -102,9 +103,11 @@ class SpacesController < ApplicationController
   end
 
   def set_space_markers
+    @user = current_user
     @spaces = policy_scope(Space)
     @spaces_location = Space.where.not(latitude: nil, longitude: nil)
-    @space_markers = @spaces_location.map do |space|
+    @spaces_available = @spaces_location.where(available: true)
+    @space_markers = @spaces_available.map do |space|
       {
         lat: space.latitude,
         lng: space.longitude,
