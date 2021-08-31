@@ -1,6 +1,5 @@
 class SpacesController < ApplicationController
   before_action :set_space, only: %i[show edit update destroy]
-  before_action :require_login, only: %i[index]
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
