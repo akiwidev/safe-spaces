@@ -5,7 +5,7 @@
 
 require("@rails/ujs").start()
 import Rails from "@rails/ujs"
-window.Rails = Rails
+
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
@@ -37,6 +37,7 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initMapbox();
   initIncidentCable();
+  window.Rails = Rails;
 });
 
 import "controllers"
