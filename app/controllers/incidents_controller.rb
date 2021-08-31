@@ -33,6 +33,7 @@ class IncidentsController < ApplicationController
         image_url: helpers.asset_url(Cloudinary::Utils.cloudinary_url(@space.user.photo.key))
       }
     ]
+    @usermarker = [{ image_url: helpers.asset_url(Cloudinary::Utils.cloudinary_url(@user.photo.key))}]
     @message = Message.new
   end
 
