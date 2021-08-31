@@ -8,7 +8,7 @@ const initIncidentCable = () => {
 
     consumer.subscriptions.create({ channel: "IncidentChannel", id: id }, {
       received(data) {
-        console.log(data); // called when data is broadcast in the cable
+        console.log(1); // called when data is broadcast in the cable
         messagesContainer.insertAdjacentHTML('beforeend', data);
         messagesContainer.scroll(0, messagesContainer.scrollHeight);
         messageContent.value = "";

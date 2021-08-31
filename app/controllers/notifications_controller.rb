@@ -9,10 +9,10 @@ class NotificationsController < ApplicationController
     @notification = Notification.find(params[:id])
     @notification.mark_as_read!
     authorize @notification
-    if @notification.type == "CommentNotification"
-      redirect_to @notification.to_notification.url
-    else
+    if @notification.type == "SpaceNotification"
       redirect_to user_path(@notification.recipient)
+    else
+      redirect_to @notification.to_notification.url
     end
   end
 end

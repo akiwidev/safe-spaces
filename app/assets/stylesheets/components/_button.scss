@@ -11,6 +11,20 @@
   justify-content: center;
   }
 
+
+.circle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: $red;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .home-btn {
   color: white;
   background-color: #452B33;
