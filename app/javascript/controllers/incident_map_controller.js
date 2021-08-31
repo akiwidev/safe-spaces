@@ -59,10 +59,16 @@ export default class extends Controller {
   })
 
   const markers = JSON.parse(mapElement.dataset.markers)
+  if (mapElement.dataset.usermarker) {
+    const usermarker = JSON.parse(mapElement.dataset.usermarker)
+    usermarker[0].lng = center[0]
+    usermarker[0].lat = center[1]
+    this.addMarkersToMap(map, usermarker)
+  }
   map.addControl(directions, "top-left")
   directions.setOrigin(center)
   directions.setDestination(`${markers[0].lng}, ${markers[0].lat}`)
-  // this.addMarkersToMap(map, markers)
+  this.addMarkersToMap(map, markers)
 
 
   // try to find a way to trigger it.
