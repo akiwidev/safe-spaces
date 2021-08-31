@@ -48,7 +48,7 @@ class SpacesController < ApplicationController
     set_space_markers
     set_koban_markers
     @incident = Incident.new
-    @spaces = Space.near([@space.latitude, @space.longitude], 15).reject do |space|
+    @spaces = Space.near([@space.latitude, @space.longitude], 15).where(available: true).reject do |space|
       @user.spaces.find do |user_space|
         space == user_space
       end
