@@ -125,10 +125,11 @@ export default class extends Controller {
     // map.on('load', () => {
     //   geolocate.trigger();
     // });
-
-    const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
-    this.addSafeSpaceMarkersToMap(map, ssmarkers)
-
+    if (mapElement.dataset.ssmarkers) {
+      const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
+      this.addSafeSpaceMarkersToMap(map, ssmarkers)
+    }
+    
     const kobanmarkers = JSON.parse(mapElement.dataset.kobanmarkers)
     this.addKobanMarkersToMap(map, kobanmarkers)
 
