@@ -14,6 +14,31 @@ export default class extends Controller {
     this.setupMap([139.7082, 35.6339])
   }
 
+  addMarkersToMap(map, markers) {
+
+    markers.forEach((marker) => {
+      // const popup = new mapboxgl.Popup().setHTML(marker.info_window);
+
+      // Create a HTML element for your custom marker
+      const element = document.createElement('div');
+      element.className = 'marker';
+      element.style.backgroundImage = `url('${marker.image_url}')`;
+      element.style.backgroundSize = 'contain';
+      element.style.width = '40px';
+      element.style.height = '40px';
+      element.style.borderRadius = '50%';
+      element.style.borderStyle = 'solid';
+      element.style.borderWidth = '2px';
+      element.style.borderColor = '#6D6875';
+
+      // Pass the element as an argument to the new marker
+      new mapboxgl.Marker(element)
+        .setLngLat([marker.lng, marker.lat])
+        // .setPopup(popup)
+        .addTo(map);
+    });
+  }
+
   setupMap = (center) => {
     const map = new mapboxgl.Map({
       container: "incident_map",
@@ -30,15 +55,22 @@ export default class extends Controller {
 
     // profile: 'mapbox/walking'
     interactive: false,
-
     unit: 'metric'
-
   })
 
   const markers = JSON.parse(mapElement.dataset.markers)
+  if (mapElement.dataset.usermarker) {
+    const usermarker = JSON.parse(mapElement.dataset.usermarker)
+    usermarker[0].lng = center[0]
+    usermarker[0].lat = center[1]
+    this.addMarkersToMap(map, usermarker)
+  }
   map.addControl(directions, "top-left")
-  directions.setOrigin(`${center[0]}, ${center[1]}`)
+  directions.setOrigin(center)
   directions.setDestination(`${markers[0].lng}, ${markers[0].lat}`)
+  this.addMarkersToMap(map, markers)
+
+
   // try to find a way to trigger it.
     setTimeout(() => document.querySelector('#mapbox-directions-profile-walking').click(), 3000)
   // document.querySelector('#mapbox-directions-profile-walking').click()

@@ -33,10 +33,11 @@ class IncidentsController < ApplicationController
       {
         lat: @incident.space.latitude,
         lng: @incident.space.longitude,
-        infoWindow: { content: render_to_string(partial: "/spaces/info_window", locals: { space: @space }) },
+        # infoWindow: { content: render_to_string(partial: "/spaces/info_window", locals: { space: @space }) },
         image_url: helpers.asset_url(Cloudinary::Utils.cloudinary_url(@space.user.photo.key))
       }
     ]
+    @usermarker = [{ image_url: helpers.asset_url(Cloudinary::Utils.cloudinary_url(@user.photo.key))}]
     @message = Message.new
   end
 
