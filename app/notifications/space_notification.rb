@@ -22,7 +22,7 @@ class SpaceNotification < Noticed::Base
   end
   #
   def url
-    space_path(params[:space])
+    user_path(params[:recipient])
   end
 
 end
