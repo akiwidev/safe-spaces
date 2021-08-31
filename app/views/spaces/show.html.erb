@@ -8,6 +8,6 @@
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ><%= simple_form_for @incident do |f|%>
     <%= f.input :user_id, as: :hidden, input_html: {value: current_user&.id} %>
-    <%= f.submit 'Help!', class: "font-weight-bold btn btn-danger btn-lg help-button"  %>
+    <%= f.submit 'Help!', class: "font-weight-bold btn btn-danger btn-lg help-button rounded-circle" %>
   <% end %>
 </div>
