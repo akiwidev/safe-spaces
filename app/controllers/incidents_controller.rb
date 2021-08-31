@@ -9,7 +9,11 @@ class IncidentsController < ApplicationController
   def create
     @incident = Incident.new(incident_params)
     @incident.user = current_user
-    @space = Space.near([params[:lat], params[:lng]], 100).first || Space.first
+    @space = Space.near([params[:lat], params[:lng]], 100).where(available: true).reject do |space|
+      current_user.spaces.find do |user_space|
+        space == user_space
+      end
+    end.first || Space.first
     authorize @incident
     @incident.space = @space
 
