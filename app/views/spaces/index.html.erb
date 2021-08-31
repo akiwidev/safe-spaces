@@ -2,9 +2,7 @@
   id="space_map"
   style="width: 100%; height: calc(100vh - 66px);"
   data-markers="<%= @markers.to_json %>"
-<% if current_user %>
   data-ssmarkers="<%= @space_markers.to_json%>"
-  <% end %>
   data-kobanmarkers="<%= @koban_markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   <%= simple_form_for @incident do |f|%>
