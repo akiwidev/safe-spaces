@@ -8,7 +8,7 @@
 <div class="card-footer">
   <%= image_tag @space.user.photo, class: "profile-avatar" %>
   <div class="card-footer-infos" data-controller="show-on-click">
-    <%= link_to '',  class: "button-circle" do %>
+    <%= link_to call_incident_path(@incident), method: :post, remote: true, class: "button-circle" do %>
       <i class="fas fa-phone-alt"></i>
     <% end %>
     <%= button_tag data: {

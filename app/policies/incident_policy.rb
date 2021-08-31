@@ -6,7 +6,7 @@ class IncidentPolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.user || user == record.space.user
+    owner_or_creator?
   end
 
   def create?
@@ -15,5 +15,15 @@ class IncidentPolicy < ApplicationPolicy
 
   def show?
     true
+  end
+
+  def call?
+    owner_or_creator?
+  end
+
+  private
+
+  def owner_or_creator?
+    user == record.user || user == record.space.user
   end
 end

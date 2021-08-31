@@ -36,6 +36,7 @@ gem 'font-awesome-sass'
 gem 'geocoder'
 gem 'pundit'
 gem 'simple_form'
+gem 'twilio-ruby'
 gem 'rails_admin', '~> 2.0'
 
 group :development, :test do  gem 'pry-byebug'
