@@ -48,6 +48,10 @@ class SpacesController < ApplicationController
     set_space_markers
     set_koban_markers
     @incident = Incident.new
+    @spaces = Space.near([@space.latitude, @space.longitude], 15)
+    @notification = SpaceNotification.with(space: @space)
+    @notification.deliver(User.all)
+    # @notification.deliver(User.where(space: @spaces))
   end
 
   def edit; end
