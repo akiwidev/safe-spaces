@@ -6,14 +6,13 @@
     bottom: 0;
     left: 0;
     width: 100vw;
-    height: 100px;
+    height: 5rem;
     border-radius: 8px 8px 0 0;
-
 
   img {
     position: absolute;
     left: 50%;
-    top: -50px;
+    top: -30px;
     transform: translateX(-50%)
   }
 }
@@ -22,7 +21,7 @@
     padding: 16px;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    // align-items: center;
     height: 100%;
 
 }
