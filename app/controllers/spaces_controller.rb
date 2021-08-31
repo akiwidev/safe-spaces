@@ -16,18 +16,18 @@ class SpacesController < ApplicationController
     set_space_markers
     set_koban_markers
     @incident = Incident.new
-    if @user.present?
+    if @user.present? && params[:query].present?
       @spaces = Space.near([coordinates[1], coordinates[0]], 15).where(available: true).reject do |space|
         @user.spaces.find do |user_space|
           space == user_space
         end
       end
       @space = @user.spaces[0]
-    end
-    @notification = SpaceNotification.with(space: @space)
-    # @notification.deliver(User.all)
-    @spaces.each do |space|
-      @notification.deliver(User.where(spaces: space))
+      @notification = SpaceNotification.with(space: @space)
+      # @notification.deliver(User.all)
+      @spaces.each do |space|
+        @notification.deliver(User.where(spaces: space))
+      end
     end
   end
 
