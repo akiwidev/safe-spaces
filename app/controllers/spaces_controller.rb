@@ -127,7 +127,11 @@ class SpacesController < ApplicationController
     @user = current_user
     @spaces = policy_scope(Space)
     @spaces_location = Space.where.not(latitude: nil, longitude: nil)
-    @spaces_available = @spaces_location.where(available: true)
+    @spaces_available = @spaces_location.where(available: true).reject do |space|
+      @user.spaces.find do |user_space|
+        space == user_space
+      end
+    end
     @space_markers = @spaces_available.map do |space|
       {
         lat: space.latitude,
