@@ -1,5 +1,7 @@
 <div class="new-message-modal container d-flex flex-column" >
-  <h1>Chat</h1>
+  <div class="hero-text text-center w-50">
+    <h1>Chat</h1>
+  </div>
   <div id="messages" data-incident-id="<%= @incident.id %>">
     <% @incident.messages.each do |message| %>
       <div class="message-container" id="message-<%= message.id %>">
@@ -14,7 +16,7 @@
   <%= simple_form_for [ @incident, @message ],
     remote: true do |f| %>
     <%= f.input :content, label: false, placeholder: "Message" %>
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-warning w-100 rounded-pill" %>
   <% end %>
   <%# <%= link_to 'Back to Map', incident_path(@incident), class: "mt-3" %>
 </div>
