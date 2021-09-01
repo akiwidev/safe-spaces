@@ -113,9 +113,6 @@ export default class extends Controller {
     });
     // Add the control to the map.
     map.addControl(geolocate);
-    // map.on('load', () => {
-    //   geolocate.trigger();
-    // });
     if (mapElement.dataset.ssmarkers) {
       const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
       this.addSafeSpaceMarkersToMap(map, ssmarkers)
@@ -123,9 +120,6 @@ export default class extends Controller {
 
     const kobanmarkers = JSON.parse(mapElement.dataset.kobanmarkers)
     this.addKobanMarkersToMap(map, kobanmarkers)
-
-    // this.fitMapToMarkers(map, markers)
-    // this.fitMapToMarkers(map, ssmarkers)
   }
 
   initMapbox(){
