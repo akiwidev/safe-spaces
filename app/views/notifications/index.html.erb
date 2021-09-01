@@ -1,15 +1,17 @@
-<div class="container text-center flex-column">
-  <div class="hero-text mb-5">
+<div class="container flex-column">
+  <div class="hero-text mb-5 text-center">
     <h1>Notifications</h1>
   </div>
-  <div class="notifications">
-    <% @notifications.each do |notification| %>
-      <div class="notification-box mb-3">
+  <% @notifications.each do |notification| %>
+    <div class="notification-box mb-3">
+      <% if notification.incident.present? %>
         <%= link_to image_tag(notification.incident.user.photo, alt: "profile photo"), user_path(notification.incident.user) %>
-        <div class="notification-content">
-          <p><%= link_to notification.to_notification.message, notification_path(notification) %></p>
-        </div>
+      <% else %>
+        <%= link_to image_tag(notification.params[:space].user.photo, alt: "profile photo"), user_path(notification.params[:space].user.photo) %>
+      <% end %>
+      <div class="notification-content">
+        <p><%= link_to notification.to_notification.message, notification_path(notification) %></p>
       </div>
-    <% end %>
   </div>
+    <% end %>
 </div>
