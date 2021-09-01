@@ -2,12 +2,14 @@
   <div class="hero-text mb-5">
     <h1>Notifications</h1>
   </div>
-  <% @notifications.each do |notification| %>
-    <div class="notification-box mb-3">
-      <%= link_to image_tag(notification.incident.user.photo, alt: "profile photo"), user_path(notification.incident.user) %>
-      <div class="notification-content">
-        <p><%= link_to notification.to_notification.message, notification_path(notification) %></p>
+  <div class="notifications">
+    <% @notifications.each do |notification| %>
+      <div class="notification-box mb-3">
+        <%= link_to image_tag(notification.incident.user.photo, alt: "profile photo"), user_path(notification.incident.user) %>
+        <div class="notification-content">
+          <p><%= link_to notification.to_notification.message, notification_path(notification) %></p>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
