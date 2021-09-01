@@ -37,6 +37,7 @@ class IncidentsController < ApplicationController
   end
 
   def edit
+    @user = @incident.user
   end
 
   def update
