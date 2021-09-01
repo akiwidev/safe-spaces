@@ -38,6 +38,17 @@
   }
 }
 
+.button-close {
+  background-color: transparent;
+  margin: none;
+  padding: none;
+  position:fixed;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
 
 .button-emergency-call {
   width: 5rem;
