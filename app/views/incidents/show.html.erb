@@ -15,7 +15,9 @@
       action: "click->show-on-click#toggle"
     }, class: "button-circle comment" do %>
       <i class="far fa-comment"></i>
-      <div class="circle">0</div>
+      <div class="circle">
+
+      </div>
     <% end %>
     <%= link_to 'Safe', edit_incident_path(@incident), class: "button-circle" %>
     <div data-show-on-click-target ="hiddenElement">
