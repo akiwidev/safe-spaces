@@ -24,7 +24,7 @@
   <div class="card-footer-infos" data-controller="show-on-click">
     <%= link_to call_incident_path(@incident), method: :post, remote: true, data: {
       action: "click->show-on-click#call"
-    }, class: "button-circle" do %>
+    }, class: "button-circle text-decoration-none" do %>
       <i class="fas fa-phone-alt"></i>
     <% end %>
     <%= button_tag data: {
@@ -34,7 +34,7 @@
       <div class="circle">
       </div>
     <% end %>
-    <%= link_to 'Safe', edit_incident_path(@incident), class: "button-circle" %>
+    <%= link_to 'Safe', edit_incident_path(@incident), class: "button-circle text-decoration-none" %>
     <div data-show-on-click-target ="hiddenElement">
       <%= render 'messages/new'%>
     </div>
