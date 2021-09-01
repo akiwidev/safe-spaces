@@ -1,6 +1,7 @@
+<div class="loader">Loading...</div>
 <div data-controller="incident-map"
   id="incident_map"
-  style="width: 100%; height: calc(100vh - 66px);"
+  style="width: 100%; height: calc(100vh - 66px); opacity: 0; "
   data-markers="<%= @markers.to_json %>"
   data-kobanmarkers="<%= @koban_markers.to_json %>"
   data-usermarker="<%= @usermarker.to_json if @incident.space.user == current_user %>"
@@ -17,7 +18,6 @@
     }, class: "button-circle comment" do %>
       <i class="far fa-comment"></i>
       <div class="circle">
-
       </div>
     <% end %>
     <%= link_to 'Safe', edit_incident_path(@incident), class: "button-circle" %>

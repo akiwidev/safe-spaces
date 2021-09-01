@@ -61,73 +61,76 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v11",
       center: center,
       zoom: 15
-  })
-
-  const nav = new mapboxgl.NavigationControl()
-  map.addControl(nav)
-  const mapElement = document.getElementById('incident_map');
-  let directions = new MapboxDirections({
-    accessToken: mapElement.dataset.mapboxApiKey,
-
-    // profile: 'mapbox/walking'
-    interactive: false,
-    unit: 'metric'
-  })
-
-  const markers = JSON.parse(mapElement.dataset.markers)
-  if (mapElement.dataset.usermarker) {
-    const usermarker = JSON.parse(mapElement.dataset.usermarker)
-    usermarker[0].lng = center[0]
-    usermarker[0].lat = center[1]
-    this.addMarkersToMap(map, usermarker)
-  }
-  map.addControl(directions, "top-left")
-  directions.setOrigin(center)
-  directions.setDestination(`${markers[0].lng}, ${markers[0].lat}`)
-  this.addMarkersToMap(map, markers)
-
-
-  // try to find a way to trigger it.
-    setTimeout(() => document.querySelector('#mapbox-directions-profile-walking').click(), 3000)
-  // document.querySelector('#mapbox-directions-profile-walking').click()
-
-  // this.addUserLocation(center)
-  // this.addDestinationLocation(markers[0])
-    map.addControl(
-      new mapboxgl.GeolocateControl({
-        positionOptions: {
-          enableHighAccuracy: true
-        },
-        // When active the map will receive updates to the device's location as it changes.
-        trackUserLocation: true,
-        // Draw an arrow next to the location dot to indicate which direction the device is heading.
-        showUserHeading: true
-      })
-    );
-  const kobanmarkers = JSON.parse(mapElement.dataset.kobanmarkers)
-  this.addKobanMarkersToMap(map, kobanmarkers)
-}
-
-initMapbox = () => {
-  const mapElement = document.getElementById('incident_map');
-  if (mapElement) { // only build a map if there's a div#map to inject into
-    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-    navigator.geolocation.getCurrentPosition(this.successLocation, this.errorLocation, {
-      enableHighAccuracy: true
     })
+    const nav = new mapboxgl.NavigationControl()
+    // map.addControl(nav)
+    const mapElement = document.getElementById('incident_map')
+    map.on("load", () => {
+      let directions = new MapboxDirections({
+        accessToken: mapElement.dataset.mapboxApiKey,
+
+        interactive: false,
+        unit: 'metric'
+      },
+      )
+      const markers = JSON.parse(mapElement.dataset.markers)
+      if (mapElement.dataset.usermarker) {
+        const usermarker = JSON.parse(mapElement.dataset.usermarker)
+        usermarker[0].lng = center[0]
+        usermarker[0].lat = center[1]
+        this.addMarkersToMap(map, usermarker)
+      }
+      map.addControl(directions, "top-left")
+      directions.setOrigin(center)
+      directions.setDestination(`${markers[0].lng}, ${markers[0].lat}`)
+      this.addMarkersToMap(map, markers)
+
+      map.on("idle", () => {
+        const mapElement = document.getElementById("incident_map");
+        mapElement.style.opacity = 1;
+        document.querySelector(".loader").style.display = "none";
+      }),
+      this.clickInterval = setInterval(() => {
+      const el = document.getElementById("mapbox-directions-profile-walking");
+        if (el) {
+          el.click();
+          clearInterval(this.clickInterval);
+        }
+      }, 100)
+    })
+
+    const geolocate = new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true,
+      // Draw an arrow next to the location dot to indicate which direction the device is heading.
+      showUserHeading: true
+    });
+    // Add the control to the map.
+    map.addControl(geolocate);
+
+    const kobanmarkers = JSON.parse(mapElement.dataset.kobanmarkers)
+    this.addKobanMarkersToMap(map, kobanmarkers)
   }
-};
 
-addUserLocation = (position) => {
-  document.querySelector(".mapboxgl-ctrl-geocoder input").value = `${position[0]}, ${position[1]}`
-  document.querySelector(".mapboxgl-ctrl-geocoder input").value.dispatchEvent(new KeyboardEvent('keyup', { 'key': 'space' }));
-  document.querySelector(".mapboxgl-ctrl-geocoder input").value.dispatchEvent(new KeyboardEvent('keyup', { 'key': 'enter' }));
-  // document.querySelector(".mapboxgl-ctrl-geocoder input").value = "Impact HUB Tokyo, 東京都, Tokyo Prefecture 153-0063, Japan"
-  // const event = new Event("submit")
-  // document.querySelector(".mapboxgl-ctrl-geocoder input").dispatchEvent(event)
-}
+  initMapbox = () => {
+    const mapElement = document.getElementById('incident_map');
+    if (mapElement) { // only build a map if there's a div#map to inject into
+      mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+      navigator.geolocation.getCurrentPosition(this.successLocation, this.errorLocation, {
+        enableHighAccuracy: true
+      })
+    }
+  }
 
-addDestinationLocation = (position) => {
-  document.querySelector(".mapbox-directions-destination input").value = `${position.lng}, ${position.lat}`
+  addUserLocation = (position) => {
+    document.querySelector(".mapboxgl-ctrl-geocoder input").value = `${position[0]}, ${position[1]}`
+    document.querySelector(".mapboxgl-ctrl-geocoder input").value.dispatchEvent(new KeyboardEvent('keyup', { 'key': 'space' }));
+    document.querySelector(".mapboxgl-ctrl-geocoder input").value.dispatchEvent(new KeyboardEvent('keyup', { 'key': 'enter' }));
+  }
+
+  addDestinationLocation = (position) => {
+    document.querySelector(".mapbox-directions-destination input").value = `${position.lng}, ${position.lat}`
   }
 }
