@@ -104,15 +104,7 @@ export default class extends Controller {
         }
       }, 100);
     })
-    // const nav = new mapboxgl.NavigationControl()
-    // map.addControl(nav)
-    // try to find a way to trigger it.
-    // setTimeout(() => document.querySelector('#mapbox-directions-profile-walking').click(), 3000)
-    //   this.addUserLocation(center)
-    //   this.addDestinationLocation(space_address)
-    //   this.addDestinationLocation(markers[0])
 
-    // Initialize the geolocate control.
     const geolocate = new mapboxgl.GeolocateControl({
       positionOptions: {
         enableHighAccuracy: true
