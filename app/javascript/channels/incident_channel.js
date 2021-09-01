@@ -21,7 +21,6 @@ const initIncidentCable = () => {
           messageContent.value = "";
           const counter = document.getElementById('counter');
           if (counter) {
-            console.log(counter);
             counter.innerText = parseInt(counter.innerText, 10) + 1;
           } else {
             const circle = document.querySelector(".circle")
