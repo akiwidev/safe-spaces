@@ -1,0 +1,26 @@
+.notification-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(10,10,10,0.3);
+  padding-bottom: 1rem;
+  max-width: 20rem;
+
+  img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+  }
+}
+
+.notification-content {
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+
+  p {
+    position: relative;
+    top: 50%;
+    transform: translateY(35%);
+  }
+}
