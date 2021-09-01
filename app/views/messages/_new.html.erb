@@ -1,5 +1,10 @@
 <div class="new-message-modal container d-flex flex-column" >
   <h1>Chat</h1>
+  <%= button_tag data: {
+      action: "click->show-on-click#toggle"
+    }, class: "button-close" do %>
+    <i class="fas fa-times"></i>
+  <% end %>
   <div id="messages" data-incident-id="<%= @incident.id %>">
     <% @incident.messages.each do |message| %>
       <div class="message-container" id="message-<%= message.id %>">
