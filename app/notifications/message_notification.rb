@@ -3,7 +3,7 @@
 # CommentNotification.with(post: @post).deliver_later(current_user)
 # CommentNotification.with(incident: @incident).deliver(current_user)
 
-class SpaceNotification < Noticed::Base
+class MessageNotification < Noticed::Base
   # Add your delivery methods
   deliver_by :database
   deliver_by :action_cable
@@ -18,11 +18,13 @@ class SpaceNotification < Noticed::Base
   # Define helper methods to make rendering easier.
   #
   def message
-    "#{params[:space].user.first_name.capitalize} has just started a trip. Are you available?"
+    if params[:incident].present?
+    "#{params[:incident].user.first_name.capitalize} sent you a message"
+    end
   end
-
+  #
   def url
-    user_path(params[:recipient])
+    incident_path(params[:incident])
   end
 
 end

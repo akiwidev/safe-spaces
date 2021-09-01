@@ -120,7 +120,6 @@ class SpacesController < ApplicationController
         lat: koban.latitude,
         lng: koban.longitude,
         info_window: render_to_string(partial: "/spaces/koban_info_window", locals: { koban: koban }),
-        image_url: helpers.asset_url('police2.png')
       }
     end
   end

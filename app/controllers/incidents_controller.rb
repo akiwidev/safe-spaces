@@ -34,6 +34,7 @@ class IncidentsController < ApplicationController
     }]
     @usermarker = [{ image_url: helpers.asset_url(Cloudinary::Utils.cloudinary_url(@user.photo.key))}]
     @message = Message.new
+    set_koban_markers
   end
 
   def edit
@@ -58,5 +59,16 @@ class IncidentsController < ApplicationController
 
   def incident_params
     params.require(:incident).permit(:safe_status, :arrived)
+  end
+
+  def set_koban_markers
+    @kobans = policy_scope(Koban)
+    @koban_markers = @kobans.map do |koban|
+      {
+        lat: koban.latitude,
+        lng: koban.longitude,
+        info_window: render_to_string(partial: "/spaces/koban_info_window", locals: { koban: koban })
+      }
+    end
   end
 end

@@ -9,7 +9,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   }
+
+
+.circle {
+  position: absolute;
+  top: -3px;
+  right: -5px;
+  background: transparent;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#counter {
+  background-color: $red;border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
 
 .home-btn {
   color: white;
