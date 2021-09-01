@@ -104,15 +104,7 @@ export default class extends Controller {
         }
       }, 100);
     })
-    // const nav = new mapboxgl.NavigationControl()
-    // map.addControl(nav)
-    // try to find a way to trigger it.
-    // setTimeout(() => document.querySelector('#mapbox-directions-profile-walking').click(), 3000)
-    //   this.addUserLocation(center)
-    //   this.addDestinationLocation(space_address)
-    //   this.addDestinationLocation(markers[0])
 
-    // Initialize the geolocate control.
     const geolocate = new mapboxgl.GeolocateControl({
       positionOptions: {
         enableHighAccuracy: true
@@ -121,9 +113,6 @@ export default class extends Controller {
     });
     // Add the control to the map.
     map.addControl(geolocate);
-    // map.on('load', () => {
-    //   geolocate.trigger();
-    // });
     if (mapElement.dataset.ssmarkers) {
       const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
       this.addSafeSpaceMarkersToMap(map, ssmarkers)
@@ -131,9 +120,6 @@ export default class extends Controller {
 
     const kobanmarkers = JSON.parse(mapElement.dataset.kobanmarkers)
     this.addKobanMarkersToMap(map, kobanmarkers)
-
-    // this.fitMapToMarkers(map, markers)
-    // this.fitMapToMarkers(map, ssmarkers)
   }
 
   initMapbox(){
