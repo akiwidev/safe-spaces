@@ -8,7 +8,7 @@
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
 <div class="card-footer">
-  <%= link_to image_tag(@space.user.photo, :alt => "profile photo", :class => "profile-avatar"), user_path(@space.user) %>
+  <%= link_to cl_image_tag(@space.user.photo.key, :alt => "profile photo", :class => "profile-avatar"), user_path(@space.user) %>
   <div class="card-footer-infos" data-controller="show-on-click">
     <%= link_to call_incident_path(@incident), method: :post, remote: true, data: {
       action: "click->show-on-click#toggleCall"

@@ -10,7 +10,7 @@
       <p>Initiating call...</p>
     </div>
     <div class="pulse">
-      <%= image_tag(@space.user.photo, :alt => "profile photo", :class => "") %>
+      <%= cl_image_tag(@space.user.photo.key, :alt => "profile photo", :class => "") %>
     </div>
   </div>
 </div>
