@@ -11,11 +11,11 @@
 
 .pulse {
   img {
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     position: fixed;
-    top: 30%;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 50%;
@@ -28,16 +28,13 @@
       box-shadow: 0 0 16px 0px rgba(0,0,0,.3);
       opacity: 0;
       transform: scale(1,1);
-      transform: translateX(-50%);
     }
     80% {
       opacity: 1;
-      transform: translateX(-50%);
     }
     100% {
       box-shadow: 0 0 16px 16px rgba(0,0,0,.3);
       transform: scale(1.2,1.2);
-      transform: translateX(-50%);
       opacity: 0;
     }
   }
