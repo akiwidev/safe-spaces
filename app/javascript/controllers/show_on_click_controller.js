@@ -1,19 +1,21 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = ['hiddenElement'];
+  static targets = ['hiddenChat', 'hiddenCall'];
   connect() {
-    this.hiddenElementTarget.style.display = "none"
-    this.hidden = true
+    this.hiddenChatTarget.style.display = "none"
+    this.hiddenChat = true
+    this.hiddenCallTarget.style.display = "none"
+    this.hiddenCall = true
   }
-  toggle() {
-    this.hiddenElementTarget.style.display = this.hidden ? "contents" : "none"
-    this.hidden = !this.hidden
+  toggleChat() {
+    this.hiddenChatTarget.style.display = this.hiddenChat ? "contents" : "none"
+    this.hiddenChat = !this.hiddenChat
     const counter = document.querySelector("#counter");
     if (counter) {counter.remove()};
   }
-
-  call() {
-
+  toggleCall() {
+    this.hiddenCallTarget.style.display = this.hiddenCall ? "contents" : "none"
+    this.hiddenCall = !this.hiddenCall
   }
 }
