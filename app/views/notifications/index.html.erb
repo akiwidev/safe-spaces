@@ -5,9 +5,9 @@
   <% @notifications.each do |notification| %>
     <div class="notification-box mb-3">
       <% if notification.incident.present? %>
-        <%= link_to image_tag(notification.incident.user.photo, alt: "profile photo"), user_path(notification.incident.user) %>
+        <%= link_to cl_image_tag(notification.incident.user.photo.key, alt: "profile photo"), user_path(notification.incident.user) %>
       <% else %>
-        <%= link_to image_tag(notification.params[:space].user.photo, alt: "profile photo"), user_path(notification.params[:space].user.photo) %>
+        <%= link_to cl_image_tag(notification.params[:space].user.photo.key, alt: "profile photo"), user_path(notification.params[:space].user.photo) %>
       <% end %>
       <div class="notification-content">
         <% if notification.unread? %>
