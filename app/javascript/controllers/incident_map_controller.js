@@ -64,7 +64,7 @@ export default class extends Controller {
   })
 
   const nav = new mapboxgl.NavigationControl()
-  map.addControl(nav)
+  // map.addControl(nav)
   const mapElement = document.getElementById('incident_map');
   let directions = new MapboxDirections({
     accessToken: mapElement.dataset.mapboxApiKey,
