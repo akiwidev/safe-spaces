@@ -18,11 +18,10 @@ export default class extends Controller {
     kobanmarkers.forEach((kobanmarker) => {
       const popup = new mapboxgl.Popup().setHTML(kobanmarker.info_window);
 
-      const element = document.createElement('div');
-      element.className = 'kobanmarker';
-      element.style.backgroundImage = `url('${kobanmarker.image_url}')`;
-      element.style.width = '35px';
-      element.style.height = '35px';
+      const element = document.createElement('span');
+      element.className = 'jpic jpic-keisatsu';
+      element.style.fontSize = '30px';
+      element.style.color = '#D42A44';
 
       new mapboxgl.Marker(element)
         .setLngLat([ kobanmarker.lng, kobanmarker.lat ])
@@ -129,7 +128,7 @@ export default class extends Controller {
       const ssmarkers = JSON.parse(mapElement.dataset.ssmarkers)
       this.addSafeSpaceMarkersToMap(map, ssmarkers)
     }
-    
+
     const kobanmarkers = JSON.parse(mapElement.dataset.kobanmarkers)
     this.addKobanMarkersToMap(map, kobanmarkers)
 
