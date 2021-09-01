@@ -14,6 +14,22 @@ export default class extends Controller {
     this.setupMap([139.7082, 35.6339])
   }
 
+  addKobanMarkersToMap(map, kobanmarkers) {
+    kobanmarkers.forEach((kobanmarker) => {
+      const popup = new mapboxgl.Popup().setHTML(kobanmarker.info_window);
+
+      const element = document.createElement('span');
+      element.className = 'jpic jpic-keisatsu';
+      element.style.fontSize = '30px';
+      element.style.color = '#D42A44';
+
+      new mapboxgl.Marker(element)
+        .setLngLat([kobanmarker.lng, kobanmarker.lat])
+        .setPopup(popup)
+        .addTo(map);
+    });
+  }
+
   addMarkersToMap(map, markers) {
 
     markers.forEach((marker) => {
@@ -88,6 +104,8 @@ export default class extends Controller {
         showUserHeading: true
       })
     );
+  const kobanmarkers = JSON.parse(mapElement.dataset.kobanmarkers)
+  this.addKobanMarkersToMap(map, kobanmarkers)
 }
 
 initMapbox = () => {
