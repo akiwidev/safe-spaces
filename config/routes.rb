@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :spaces
   resources :users, only: %i[show edit update]
   resources :notifications, only: %i[index show]
+  get "profile", to: "users#profile", as: "profile"
 end

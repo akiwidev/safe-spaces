@@ -66,10 +66,17 @@ class SpacesController < ApplicationController
         space == user_space
       end
     end
-    @notification = SpaceNotification.with(space: @space)
+    @notification = SpaceNotification.with(space: @space, notification: render_to_string(partial: "notifications/notification_current_user" ))
     # @notification.deliver(User.all)
     @spaces.each do |space|
       @notification.deliver(User.where(spaces: space))
+      User.where(spaces: space).each do |user|
+        # raise if user == User.find(10)
+      NotificationChannel.broadcast_to(
+        user,
+        render_to_string(partial: "notifications/notification", locals: { notification: @notification })
+      )
+      end
     end
   end
 

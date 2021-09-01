@@ -16,7 +16,7 @@ const initIncidentCable = () => {
       consumer.subscriptions.create({ channel: "IncidentChannel", id: id }, {
         received(data) {
           console.log(1); // called when data is broadcast in the cable
-          messagesContainer.insertAdjacentHTML('beforeend', data);
+          messagesContainer.insertAdjacentHTML('afterbegin', data);
           messagesContainer.scroll(0, messagesContainer.scrollHeight);
           messageContent.value = "";
           const counter = document.getElementById('counter');
