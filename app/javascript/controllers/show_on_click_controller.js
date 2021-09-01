@@ -12,4 +12,8 @@ export default class extends Controller {
     const counter = document.querySelector("#counter");
     if (counter) {counter.remove()};
   }
+
+  call() {
+
+  }
 }
