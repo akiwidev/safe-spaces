@@ -2,15 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 
 .hero {
-  height: 33vh;
+  height: 29vh;
   position: relative;
-  padding-top: 2rem;
 }
 
 .circle-hero {
   position: relative;
-  width: 15rem;
-  height: 15rem;
+  width: 12rem;
+  height: 12rem;
   left: 50%;
   transform: translateX(-50%);
   background: #FFB4A2;
@@ -18,7 +17,7 @@
 }
 
 .hero-image {
-  width: 18rem;
+  width: 15rem;
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
@@ -30,6 +29,7 @@
   z-index: 1;
   width: 23rem;
   margin: 0 auto;
+  border-bottom: 2px solid #e5989b7e;
 
   h1 {
     font-family: 'Bellota Text', cursive;

@@ -28,11 +28,14 @@ body, html {
 }
 
 .content {
-  display: flex;
   background: transparent;
-  height: 30vh;
+  background-color: transparent;
+  height: 20vh;
   align-items: center;
   justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
 }
 
 @media (max-height: 668px) {
