@@ -7,12 +7,17 @@
   data-usermarker="<%= @usermarker.to_json if @incident.space.user == current_user %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
-<div class="call-modal pulse">
+<div class="call-modal text-center">
   <div class="text-center mt-5">
     <h1><%= @space.user.first_name.capitalize %></h1>
     <p>Calling...</p>
   </div>
-  <%= image_tag(@space.user.photo, :alt => "profile photo", :class => "") %>
+  <div class="pulse">
+    <%= image_tag(@space.user.photo, :alt => "profile photo", :class => "") %>
+  </div>
+  <div class="end-call">
+    <i class="fas fa-phone-slash"></i>
+  </div>
 </div>
 <div class="card-footer">
   <%= link_to image_tag(@space.user.photo, :alt => "profile photo", :class => "profile-avatar"), user_path(@space.user) %>
