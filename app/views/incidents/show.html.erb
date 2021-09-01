@@ -10,7 +10,7 @@
 <div class="card-footer">
   <%= link_to image_tag(@space.user.photo, :alt => "profile photo", :class => "profile-avatar"), user_path(@space.user) %>
   <div class="card-footer-infos" data-controller="show-on-click">
-    <%= link_to call_incident_path(@incident), method: :post, remote: true, class: "button-circle" do %>
+    <%= link_to call_incident_path(@incident), method: :post, remote: true, class: "button-circle text-decoration-none" do %>
       <i class="fas fa-phone-alt"></i>
     <% end %>
     <%= button_tag data: {
@@ -20,7 +20,7 @@
       <div class="circle">
       </div>
     <% end %>
-    <%= link_to 'Safe', edit_incident_path(@incident), class: "button-circle" %>
+    <%= link_to 'Safe', edit_incident_path(@incident), class: "button-circle text-decoration-none" %>
     <div data-show-on-click-target ="hiddenElement">
       <%= render 'messages/new'%>
     </div>
