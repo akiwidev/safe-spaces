@@ -1,0 +1,16 @@
+<div class="new-message-modal container d-flex flex-column" >
+  <%= button_tag data: {
+      action: "click->show-on-click#toggleCall"
+    }, class: "button-close" do %>
+    <i class="fas fa-times"></i>
+  <% end %>
+  <div class="call-modal text-center">
+    <div class="text-center mt-5">
+      <h1><%= @space.user.first_name.capitalize %></h1>
+      <p>Initiating call...</p>
+    </div>
+    <div class="pulse">
+      <%= cl_image_tag(@space.user.photo.key, :alt => "profile photo", :class => "") %>
+    </div>
+  </div>
+</div>
