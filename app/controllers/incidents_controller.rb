@@ -38,6 +38,8 @@ class IncidentsController < ApplicationController
   end
 
   def edit
+    @user = @incident.user
+    @space = @incident.space
   end
 
   def update

@@ -11,49 +11,50 @@
       <div class="user-bio text-center">
         <h3><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h3>
         <p><%= @user.bio %></p>
-        <div class="d-flex justify-content-between px-3">
+        <div class="justify-content-between px-3">
           <% if current_user == @user %>
-            <p><%= link_to 'Edit profile', edit_user_path(@user) %></p>
-            <p><%= link_to 'Back', '/' %></p>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
-    <div class="container user-spaces mt-3 d-flex flex-column">
-      <div class="text-center">
-        <h2>My Spaces</h2>
-      </div>
-      <div class="row">
-        <div class="card-deck">
-          <% @user.spaces.each do |space| %>
-            <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column align-items-center mx-auto">
-              <div class="card p-0 my-3 card-spaces" style="border-radius: 0.5rem;">
-                <% if space.photo.attached? %>
-                  <%= image_tag space.photo, class: "card-img-top" %>
-                <% else %>
-                  <%= image_tag "spaces/home-placeholder.png", class: "card-img-top" %>
-                <% end %>
-                <div class="card-body pb-0">
-                  <div class="d-flex justify-content-between border-bottom pt-1">
-                    <% if current_user == @user %>
-                      <%= simple_form_for space, namespace: "space-#{space.id}", remote: true do |f| %>
-                        <%= f.input :available, input_html: { :onclick => "Rails.fire(this.form, 'submit')", class: "toggle" }, label: 'Available?' %>
-                      <% end %>
-                      <div class="d-flex">
-                        <p><%= link_to ('<i class="fas fa-edit"></i>').html_safe, edit_space_path(space), class: "pr-3" %></p>
-                        <p><%= link_to ('<i class="fas fa-trash-alt"></i>').html_safe, space_path(space), method: :delete, data: { confirm: 'Delete space?' } %></p>
-                      </div>
-                    <% end %>
-                  </div>
-                  <div class="pt-2"><small class="card-title mt-1"><%= space.address %></small></div>
-                  <p class="card-text mt-2 py-3 border-top"><%= space.conditions %></p>
-                </div>
-              </div>
+            <p><strong>Phone num:</strong> <%= @user.phone_num %>
+              <p><strong>Emergency contact:</strong> <%= @user.emergency_name %> - <%= @user.emergency_num %>
+                <p><%= link_to 'Edit profile', edit_user_path(@user) %></p>
+                <p><%= link_to 'Back', '/' %></p>
+              <% end %>
             </div>
-          <% end %>
+          </div>
+        </div>
+        <div class="container user-spaces mt-3 d-flex flex-column">
+          <div class="text-center">
+            <h2>My Spaces</h2>
+          </div>
+          <div class="row">
+            <div class="card-deck">
+              <% @user.spaces.each do |space| %>
+                <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column align-items-center mx-auto">
+                  <div class="card p-0 my-3 card-spaces" style="border-radius: 0.5rem;">
+                    <% if space.photo.attached? %>
+                      <%= image_tag space.photo, class: "card-img-top" %>
+                    <% else %>
+                      <%= image_tag "spaces/home-placeholder.png", class: "card-img-top" %>
+                    <% end %>
+                    <div class="card-body pb-0">
+                      <div class="d-flex justify-content-between border-bottom pt-1">
+                        <% if current_user == @user %>
+                          <%= simple_form_for space, namespace: "space-#{space.id}", remote: true do |f| %>
+                            <%= f.input :available, input_html: { :onclick => "Rails.fire(this.form, 'submit')", class: "toggle" }, label: 'Available?' %>
+                          <% end %>
+                          <div class="d-flex">
+                            <p><%= link_to ('<i class="fas fa-edit"></i>').html_safe, edit_space_path(space), class: "pr-3" %></p>
+                            <p><%= link_to ('<i class="fas fa-trash-alt"></i>').html_safe, space_path(space), method: :delete, data: { confirm: 'Delete space?' } %></p>
+                          </div>
+                        <% end %>
+                      </div>
+                      <div class="pt-2"><small class="card-title mt-1"><%= space.address %></small></div>
+                      <p class="card-text mt-2 py-3 border-top"><%= space.conditions %></p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
