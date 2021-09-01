@@ -8,6 +8,8 @@
     <%= f.input :first_name %> <%= f.input :last_name %>
     <%= f.input :phone_num %>
     <%= f.input :bio %>
+    <%= f.input :emergency_name %>
+    <%= f.input :emergency_num, label: 'Emergency number' %>
     <%= f.input :photo, as: :file %>
   </div>
   <%= f.submit "Update Profile", class: "btn btn-primary" %>

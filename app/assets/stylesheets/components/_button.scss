@@ -62,3 +62,78 @@
     margin-top: 1rem;
   }
 }
+
+
+.button-emergency-call {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: #E5989B;
+  text-shadow: 1px 1px 3px rgba(19, 4, 4, 0.2);
+  box-shadow: 0 0 50px rgba(0,0,0,0.2);
+  cursor: pointer;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+
+
+  a {
+    color: white;
+    font-size: 2rem;
+  }
+}
+
+.button-emergency-call {
+  border-radius: 50px;
+  -webkit-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
+  color: #00d7c3;
+}
+.button-emergency-call:hover {
+  box-shadow: 0 0 10px 0 #00d7c3 inset, 0 0 20px 2px #00d7c3;
+  border: 3px solid #00d7c3;
+}
+
+.button-emergency-message {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: #E5989B;
+  text-shadow: 1px 1px 3px rgba(19, 4, 4, 0.2);
+  box-shadow: 0 0 50px rgba(0,0,0,0.2);
+  cursor: pointer;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+
+
+   a {
+    color: white;
+    font-size: 2rem;
+  }
+}
+
+.button-emergency-message {
+  border-radius: 50px;
+  -webkit-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
+  color: #00d7c3;
+}
+.button-emergency-message:hover {
+  box-shadow: 0 0 10px 0 #00d7c3 inset, 0 0 20px 2px #00d7c3;
+  border: 3px solid #00d7c3;
+}
+
+
+//  width: 8rem;
+//   padding-top: 10px;
+//   padding-bottom: 10px;
+//   text-align: center;
+//   color: #000;
+//   text-transform: uppercase;
+//   font-weight: 600;
+//   margin-left: 20px;
+//   margin-bottom: 20px;
+//   cursor: pointer;
+//   display: inline-block;
+//   background-color: #E5989B;
