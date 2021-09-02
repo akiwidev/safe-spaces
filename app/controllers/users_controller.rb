@@ -13,6 +13,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def profile
+    redirect_to user_path(current_user)
+    authorize current_user
+  end
+
   private
 
   def set_user
