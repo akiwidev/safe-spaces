@@ -99,21 +99,22 @@
 }
 
 .button-emergency-call {
-  width: 5rem;
-  height: 5rem;
+  width: 50px;
+  height: 2.5rem;
   border-radius: 50%;
-  background-color: #E5989B;
-  text-shadow: 1px 1px 3px rgba(19, 4, 4, 0.2);
-  box-shadow: 0 0 50px rgba(0,0,0,0.2);
+  margin-right: 2px;
+  background-color: #1A2637;
+  // text-shadow: 1px 1px 3px rgba(19, 4, 4, 0.2);
+  // box-shadow: 0 0 50px rgba(0,0,0,0.2);
   cursor: pointer;
-  display: inline-block;
-  align-items: center;
-  justify-content: center;
+  // display: inline-block;
+  // align-items: center;
+  // justify-content: center;
 
 
   a {
     color: white;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 
