@@ -32,15 +32,21 @@
         <% end %>
         <% end %>
       </div>
-      <% if user_signed_in? %>
+    </div>
+    <% if user_signed_in? %>
+      <div class="d-flex mt-4 pt-3 pb-2 help-box text-left border-top border-bottom" style="margin: 0 auto; max-width: 18.75rem;">
+        <div class="mr-4">
+          <h2>Feel unsafe?</h2>
+          <p>Click on this button here or on your map to find your nearest safe space</p>
+        </div>
         <%= simple_form_for @incident, html: {"data-user-location-target": "link"} do |f|%>
             <%= f.input :user_id, as: :hidden, input_html: {value: current_user&.id } %>
             <%= hidden_field_tag :lng, "", "data-user-location-target": "lng" %>
             <%= hidden_field_tag :lat, "", "data-user-location-target": "lat"   %>
-            <%= f.submit 'Take me to a safe space', class: "btn btn-danger btn-lg help-btn" %>
+            <%= f.submit 'Help!', class: "font-weight-bold btn btn-danger btn-lg", style: "height: 5rem; width: 5rem; border-radius: 50%;"  %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
     <% unless user_signed_in? %>
       <div class="d-flex justify-content-center mt-5 mb-3">
         <%= link_to "Login", new_user_session_path, class: "cta-btn", style: "color: white" %>
