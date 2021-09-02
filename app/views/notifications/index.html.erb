@@ -12,9 +12,9 @@
       <% end %>
       <div class="notification-content">
         <% if notification.unread? %>
-          <p><%= link_to notification.to_notification.message, notification_path(notification), style: "font-weight: bold" %></p>
+          <p><%= notification.to_notification.message %><%= link_to " here", notification_path(notification), style: "font-weight: bold" %></p>
         <% else %>
-          <p><%= link_to notification.to_notification.message, notification_path(notification), style: "opacity: 60%" %></p>
+          <p><%= notification.to_notification.message %><%= link_to " here", notification_path(notification), style: "opacity: 60%" %></p>
         <% end %>
       </div>
   </div>
