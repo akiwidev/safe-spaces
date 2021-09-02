@@ -8,7 +8,11 @@
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
 <div class="card-footer">
-  <%= link_to cl_image_tag(@space.user.photo.key, :alt => "profile photo", :class => "profile-avatar"), user_path(@space.user) %>
+  <% if @space.user == current_user %>
+    <%= link_to cl_image_tag(@incident.user.photo.key, :alt => "profile photo", :class => "profile-avatar"), user_path(@incident.user) %>
+  <% else %>
+    <%= link_to cl_image_tag(@space.user.photo.key, :alt => "profile photo", :class => "profile-avatar"), user_path(@space.user) %>
+  <% end %>
   <div class="card-footer-infos" data-controller="show-on-click">
     <%= link_to call_incident_path(@incident), method: :post, remote: true, data: {
       action: "click->show-on-click#toggleCall"
