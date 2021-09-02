@@ -1,6 +1,13 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to "/", class: "navbar-brand" do %>
-    <%= image_tag "safe-spaces-logo-transparent.png" %>
+    <%= image_tag "safe-spaces-logo-light.png" %>
+  <% end %>
+  <% if user_signed_in? %>
+    <div>
+      <li class="form-inline mr-3"><%= link_to notifications_path, class: "text-decoration-none navi-link", style: "color: white" do %>
+        <i class="far fa-bell"></i> <%= Notification.where(recipient: current_user).unread.count %>
+      <% end %>
+    </div>
   <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -9,23 +16,23 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="form-inline mr-3">
-          <%= link_to "Profile", user_path(current_user), class: "text-decoration-none navi-link", style: "color: black" %>
+          <%= link_to "Profile", user_path(current_user), class: "text-decoration-none navi-link", style: "color: white" %>
         </li>
         <li class="form-inline mr-3">
-          <%= link_to "Add a space", new_space_path, class: "text-decoration-none navi-link", style: "color: black" %>
-        <li class="form-inline mr-3"><%= link_to notifications_path, class: "text-decoration-none navi-link", style: "color: black" do %>
-        <i class="far fa-bell"></i> <span id="unread"><%= Notification.where(recipient: current_user).unread.count %></span>
-        <% end %>
+          <%= link_to "Add a space", new_space_path, class: "text-decoration-none navi-link", style: "color: white" %>
+          <li class="form-inline mr-3"><%= link_to notifications_path, class: "text-decoration-none navi-link", style: "color: white" do %>
+            <i class="far fa-bell"></i> <span id="unread"><%= Notification.where(recipient: current_user).unread.count %></span>
+          <% end %>
         </li>
         <li class="form-inline mr-3">
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "text-decoration-none navi-link", style: "color: black" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "text-decoration-none navi-link", style: "color: white" %>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Login", new_user_session_path, class: "nav-link", style: "color: white" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link", style: "color: white" %>
         </li>
       <% end %>
     </ul>

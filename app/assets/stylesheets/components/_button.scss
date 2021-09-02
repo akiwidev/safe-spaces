@@ -59,6 +59,27 @@
   // margin-bottom: 0.5rem;
 }
 
+.cta-btn {
+  padding: 1rem 1.5rem;
+  border: 1px solid white;
+  margin: 0 1rem;
+  border-radius: 0.5rem;
+
+  &:hover {
+    transform: scale(1.1);
+    text-decoration: none;
+  }
+}
+
+.signup-btn {
+  color: #1A2637;
+  background-color: white;
+  font-weight: bold;
+
+  &:hover {
+    color: #1A2637;
+  }
+}
 
 @media (min-height: 668px) {
   .help-btn {

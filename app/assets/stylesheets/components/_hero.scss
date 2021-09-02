@@ -12,7 +12,7 @@
   height: 12rem;
   left: 50%;
   transform: translateX(-50%);
-  background: #FFB4A2;
+  background: linear-gradient(#B5838D85 30%, #53003000 90%);
   border-radius: 50%;
 }
 
@@ -34,9 +34,12 @@
     font-family: 'Bellota Text', cursive;
     font-size: 3.5rem;
     font-weight: bold;
-    background: linear-gradient(transparent 30%, #E5989B 10%, #E5989B 90%, transparent 90%);
+    background: linear-gradient(transparent 30%, #B5838D8C 10%, #B5838D8C 90%, transparent 90%);
     background-position-x: 50%;
-    color: #323232;
+    color: rgba(250,250,250,1);
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    width: max-content;
   }
 
   h2 {
