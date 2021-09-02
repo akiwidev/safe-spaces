@@ -39,7 +39,7 @@
           <h2>Feel unsafe?</h2>
           <p>Click on this button here or on your map to find your nearest safe space</p>
         </div>
-        <%= simple_form_for @incident, html: {"data-user-location-target": "link"} do |f|%>
+        <%= simple_form_for @incident, html: {"data-user-location-target": "link"}, class: "d-flex align-items-center" do |f|%>
             <%= f.input :user_id, as: :hidden, input_html: {value: current_user&.id } %>
             <%= hidden_field_tag :lng, "", "data-user-location-target": "lng" %>
             <%= hidden_field_tag :lat, "", "data-user-location-target": "lat"   %>
