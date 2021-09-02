@@ -1,0 +1,5 @@
+meta_product_name: "Safe Spaces"
+meta_title: "Safe Spaces - Get home safe"
+meta_description: "A community coming together to support and protect women"
+meta_image: "og-image.png" # should exist in `app/assets/images/`
+twitter_account: "@safe_spaces_twitter_account" # required for Twitter Cards

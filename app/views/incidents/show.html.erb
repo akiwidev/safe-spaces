@@ -8,21 +8,26 @@
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
 <div class="card-footer">
-  <%= link_to image_tag(@space.user.photo, :alt => "profile photo", :class => "profile-avatar"), user_path(@space.user) %>
+  <%= link_to cl_image_tag(@space.user.photo.key, :alt => "profile photo", :class => "profile-avatar"), user_path(@space.user) %>
   <div class="card-footer-infos" data-controller="show-on-click">
-    <%= link_to call_incident_path(@incident), method: :post, remote: true, class: "button-circle" do %>
+    <%= link_to call_incident_path(@incident), method: :post, remote: true, data: {
+      action: "click->show-on-click#toggleCall"
+    }, class: "button-circle text-decoration-none" do %>
       <i class="fas fa-phone-alt"></i>
     <% end %>
     <%= button_tag data: {
-      action: "click->show-on-click#toggle"
+      action: "click->show-on-click#toggleChat"
     }, class: "button-circle comment" do %>
       <i class="far fa-comment"></i>
       <div class="circle">
       </div>
     <% end %>
-    <%= link_to 'Safe', edit_incident_path(@incident), class: "button-circle" %>
-    <div data-show-on-click-target ="hiddenElement">
+    <%= link_to 'Safe', edit_incident_path(@incident), class: "button-circle text-decoration-none" %>
+    <div data-show-on-click-target ="hiddenChat">
       <%= render 'messages/new'%>
+    </div>
+    <div data-show-on-click-target ="hiddenCall">
+      <%= render 'messages/call'%>
     </div>
   </div>
 </div>

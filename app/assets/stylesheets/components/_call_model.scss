@@ -1,0 +1,42 @@
+.call-modal {
+  h1 {
+    color: $slightly-light-gray;
+    font-size: 3rem;
+    margin-top: 160px;
+  }
+  p {
+    color: $slightly-light-gray;
+    font-size: 1rem;
+  }
+}
+
+.pulse {
+  img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    // transform: ;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 16px 0px rgba(0,0,0,.3);
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 16px 0px rgba(0,0,0,.3);
+      opacity: 0;
+      transform: translateX(-50%) scale(1,1);
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      box-shadow: 0 0 16px 16px rgba(0,0,0,.3);
+      transform: translateX(-50%) scale(1.2,1.2);
+      opacity: 0;
+    }
+  }
+}
