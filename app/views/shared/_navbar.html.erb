@@ -5,7 +5,7 @@
   <% if user_signed_in? %>
     <div>
       <li class="form-inline mr-3"><%= link_to notifications_path, class: "text-decoration-none navi-link", style: "color: white" do %>
-        <i class="far fa-bell"></i> <%= Notification.where(recipient: current_user).unread.count %>
+        <i class="far fa-bell"></i> <span id="unread"><%= Notification.where(recipient: current_user).unread.count %></span>
       <% end %>
     </div>
   <% end %>
@@ -20,9 +20,6 @@
         </li>
         <li class="form-inline mr-3">
           <%= link_to "Add a space", new_space_path, class: "text-decoration-none navi-link", style: "color: white" %>
-          <li class="form-inline mr-3"><%= link_to notifications_path, class: "text-decoration-none navi-link", style: "color: white" do %>
-            <i class="far fa-bell"></i> <span id="unread"><%= Notification.where(recipient: current_user).unread.count %></span>
-          <% end %>
         </li>
         <li class="form-inline mr-3">
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "text-decoration-none navi-link", style: "color: white" %>
