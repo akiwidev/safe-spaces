@@ -18,7 +18,7 @@ class SpaceNotification < Noticed::Base
   # Define helper methods to make rendering easier.
   #
   def message
-    "#{params[:space].user.first_name.capitalize} has just started a trip. Are you available?"
+    "#{params[:space].user.first_name.capitalize} is about to start a trip. Are you at home? If not, make your place unavailable."
   end
 
   def url
