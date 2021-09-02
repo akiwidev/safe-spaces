@@ -15,7 +15,16 @@ export default class extends Controller {
     if (counter) {counter.remove()};
   }
   toggleCall() {
-    this.hiddenCallTarget.style.display = this.hiddenCall ? "contents" : "none"
-    this.hiddenCall = !this.hiddenCall
+    if (this.hiddenCall) {
+      this.hiddenCallTarget.style.display = "contents"
+      this.hiddenCall = false
+      setTimeout(() => {
+        this.hiddenCallTarget.style.display = "none"
+        this.hiddenCall = true
+      }, 5000);
+    } else {
+      this.hiddenCallTarget.style.display = "none"
+      this.hiddenCall = true
+    }
   }
 }
