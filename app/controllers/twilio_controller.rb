@@ -5,7 +5,7 @@ class TwilioController < ApplicationController
 
   def call
     @incident = Incident.find(params[:id])
-    TwilioService.new(sender: @incident.user.phone_num, receiver: @incident.space.user.phone_num).call
+    TwilioService.new(sender: @incident.space.user.phone_num, receiver: @incident.user.phone_num).call
   end
 
   def connect

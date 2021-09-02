@@ -22,7 +22,11 @@
       <div class="circle">
       </div>
     <% end %>
-    <%= link_to 'Safe', edit_incident_path(@incident), class: "button-circle text-decoration-none" %>
+    <% if @space.user == current_user %>
+      <%= link_to 'Arrived', edit_incident_path(@incident), class: "button-circle text-decoration-none", style: "font-size: 12px" %>
+    <% else %>
+      <%= link_to 'Safe', edit_incident_path(@incident), class: "button-circle text-decoration-none" %>
+    <% end %>
     <div data-show-on-click-target ="hiddenChat">
       <%= render 'messages/new'%>
     </div>
