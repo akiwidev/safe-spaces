@@ -2,16 +2,12 @@
   <div class="profile-background"></div>
   <div class="profile-header">
     <% if space.photo.attached? %>
-      <div><%= cl_image_tag space.photo.key, class: "profile-image d-flex justify-content-center" %><%= cl_image_tag space.user.photo.key, class: "profile-avatar" %></div>
+      <div style="height: 10.5rem"><%= cl_image_tag space.photo.key, class: "profile-image d-flex justify-content-center" %><%= cl_image_tag space.user.photo.key, class: "profile-avatar" %></div>
     <% else %>
       <div><%= image_tag '/assets/images/spaces/home-placeholder.png', class: "profile-image d-flex justify-content-center" %><%= cl_image_tag space.user.photo.key, class: "profile-avatar" %></div>
     <% end %>
     <div class="profile-title">
       <h2><%= space.user.first_name.capitalize %></h2>
-    </div>
-    <div class="profile-contact">
-      <a href="#"><i class="fas fa-phone-alt"></i></a>
-      <a href="#"><i class="far fa-comment-dots"></i></a>
     </div>
   </div>
   <div class="profile-body">
