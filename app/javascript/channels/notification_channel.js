@@ -20,8 +20,8 @@ const initNotificationCable = () => {
         // Called when the subscription is ready for use on the server
       },
       received(data) {
-        console.log(data.notification);
-        notificationsContainer.insertAdjacentHTML('afterbegin', data.notification);
+        // console.log(data.notification);
+        // notificationsContainer.insertAdjacentHTML('afterbegin', data.notification);
         // notificationsContainer.scroll(0, notificationsContainer.scrollHeight);
       },
     });
