@@ -1,10 +1,12 @@
-<div class="container form-login">
+<div class="container form-login mb-5">
   <div class="row justify-content-center">
     <div class="col-12">
     <div>
-      <h1 class="mb-3 text-center">New Space</h1>
+      <div class="hero-text">
+        <h1 class="mb-3 text-center">New Space</h1>
+      </div>
       <%= render 'form', space: @space %>
-      <%= link_to 'Back ', spaces_path %>
+      <%= link_to 'Back', :back %>
     </div>
   </div>
 </div>

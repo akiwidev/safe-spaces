@@ -1,20 +1,29 @@
 .form-login {
+  background: rgb(54, 53, 66);
   border: 1px solid rgba(10,10,10,0.1);
-  padding: 2rem;
   border-radius: 1rem;
-  background: white;
-  max-width: 25rem;
+  padding: 2.5rem;
+  box-shadow: 0 0.5rem 0.5rem rgba(10, 10, 10, 0.76);
+  max-width: max-content;
+  color: rgba(250,250,250,0.8);
+
   h2 {
+    color: white;
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 30px;
     text-align: center;
   }
+
   .btn {
     width: 100%;
     margin-bottom: 20px;
     color: white;
     font-weight: bold;
     border-radius: 1rem;
+  }
+
+  a {
+    color: white;
   }
 }
