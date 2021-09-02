@@ -16,8 +16,8 @@
             <p><strong>Phone num:</strong> <%= @user.phone_num %>
               <p><strong>Emergency contact:</strong> <%= @user.emergency_name %> - <%= @user.emergency_num %>
                 <p><%= link_to 'Edit profile', edit_user_path(@user) %></p>
-                <p><%= link_to 'Back', '/' %></p>
               <% end %>
+              <%= link_to 'Back to Map', :back, class: "text-decoration-none" %>
             </div>
           </div>
         </div>

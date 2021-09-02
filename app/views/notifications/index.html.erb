@@ -2,6 +2,7 @@
   <div class="hero-text mb-5 text-center" style="max-width: 18rem">
     <h1 style="font-size: 3rem">Notifications</h1>
   </div>
+  <div id= "notification-container">
   <% @notifications.each do |notification| %>
     <div class="notification-box mb-3">
       <% if notification.incident.present? %>
@@ -16,6 +17,7 @@
           <p><%= link_to notification.to_notification.message, notification_path(notification), style: "opacity: 60%" %></p>
         <% end %>
       </div>
-    </div>
-  <% end %>
+  </div>
+    <% end %>
+  </div>
 </div>

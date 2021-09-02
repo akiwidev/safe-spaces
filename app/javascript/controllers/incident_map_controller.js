@@ -33,7 +33,7 @@ export default class extends Controller {
   addMarkersToMap(map, markers) {
 
     markers.forEach((marker) => {
-      // const popup = new mapboxgl.Popup().setHTML(marker.info_window);
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window);
 
       // Create a HTML element for your custom marker
       const element = document.createElement('div');
@@ -50,7 +50,7 @@ export default class extends Controller {
       // Pass the element as an argument to the new marker
       new mapboxgl.Marker(element)
         .setLngLat([marker.lng, marker.lat])
-        // .setPopup(popup)
+        .setPopup(popup)
         .addTo(map);
     });
   }

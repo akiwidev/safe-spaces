@@ -17,6 +17,10 @@ class UserPolicy < ApplicationPolicy
     user_is_owner? # || user_is_admin?
   end
 
+  def profile?
+    true
+  end
+
   private
 
   def user_is_owner?
