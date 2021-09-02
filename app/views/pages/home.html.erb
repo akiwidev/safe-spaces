@@ -2,17 +2,17 @@
   <div class="fullscreen">
     <div class="hero d-flex align-items-center">
       <div class="circle-hero"></div>
-      <div><%= image_tag "safe-spaces-logo-transparent.png", class: "hero-image" %></div>
+      <div><%= image_tag "safe-spaces-logo-light.png", class: "hero-image" %></div>
     </div>
     <div>
-      <div class="hero-text" style="border-bottom: 2px solid #e5989b7e">
-        <h1 class="text-center m-4">Safe Spaces</h1>
+      <div class="hero-text">
+        <h1 class="text-center" style="background: transparent;">Safe Spaces</h1>
         <h2 class="text-center mb-3">Getting you home safe.</h2>
       </div>
     </div>
     <div class="content d-flex flex-column">
       <div class="buttons">
-        <%= form_tag spaces_path, class: "d-flex", style: "width: 19rem", method: :get do %>
+        <%= form_tag spaces_path, class: "d-flex", style: "width: 17.5rem", method: :get do %>
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",
@@ -22,22 +22,33 @@
           <%= button_tag class: "btn btn-dark", style: "border-radius: 0 0.5rem 0.5rem 0; box-shadow: 0 0.2rem 0.2rem rgba(10,10,10,0.3);" do %>
             <i class="fas fa-walking"></i>
           <% end %>
+          <% if user_signed_in? %>
           <div class="mx-3 d-flex align-items-center">
             <h5>or</h5>
           </div>
-          <% if user_signed_in? %>
             <%= link_to space_path(current_user.spaces.first), class: "home-btn text-decoration-none text-info" do %>
             <p class="text-decoration-none"><i class="fas fa-home"></i></p>
           <% end %>
         <% end %>
         <% end %>
       </div>
-      <%= simple_form_for @incident, html: {"data-user-location-target": "link"} do |f|%>
-          <%= f.input :user_id, as: :hidden, input_html: {value: current_user&.id } %>
-          <%= hidden_field_tag :lng, "", "data-user-location-target": "lng" %>
-          <%= hidden_field_tag :lat, "", "data-user-location-target": "lat"   %>
-          <%= f.submit 'Take me to a safe space', class: "btn btn-danger btn-lg help-btn" %>
+      <% if user_signed_in? %>
+        <%= simple_form_for @incident, html: {"data-user-location-target": "link"} do |f|%>
+            <%= f.input :user_id, as: :hidden, input_html: {value: current_user&.id } %>
+            <%= hidden_field_tag :lng, "", "data-user-location-target": "lng" %>
+            <%= hidden_field_tag :lat, "", "data-user-location-target": "lat"   %>
+            <%= f.submit 'Take me to a safe space', class: "btn btn-danger btn-lg help-btn" %>
+        <% end %>
       <% end %>
     </div>
+    <% unless user_signed_in? %>
+      <div class="d-flex justify-content-center mt-5 mb-3">
+        <%= link_to "Login", new_user_session_path, class: "cta-btn", style: "color: white" %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "cta-btn signup-btn" %>
+      </div>
+      <div class="text-signup">
+        <small>Not a member? Sign up to see your nearest safe spaces.</small>
+      </div>
+    <% end %>
   </div>
 </div>

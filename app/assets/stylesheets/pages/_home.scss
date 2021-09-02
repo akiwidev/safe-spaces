@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 body, html {
-  background: #F4EBE6;
+  background: #1A2637;
 }
 
 .fullscreen-image {
@@ -18,7 +18,7 @@ body, html {
 
 .fullscreen {
     // background: url(homepage.jpg) no-repeat center center fixed;
-    background: #F4EBE6;
+    background: transparent;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -29,12 +29,26 @@ body, html {
 
 .content {
   background: transparent;
-  background-color: transparent;
-  height: 20vh;
+  background-color: rgba(196, 196, 196, 0.5);
+  height: max-content;
+  padding: 2rem;
   align-items: center;
   justify-content: center;
-  width: 90%;
+  width: max-content;
   margin: 1.25rem auto;
+  border-radius: 2rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(10,10,10,0.4);
+}
+
+.text-signup {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  opacity: 80%;
+  margin: 0 auto;
+  max-width: 65%;
+  margin-bottom: 1rem;
 }
 
 @media (max-height: 668px) {
