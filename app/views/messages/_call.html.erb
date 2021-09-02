@@ -1,4 +1,4 @@
-<div class="new-message-modal container d-flex flex-column" >
+<div class="new-message-modal container d-flex flex-column" style="width: 15rem;" >
   <%= button_tag data: {
       action: "click->show-on-click#toggleCall"
     }, class: "button-close" do %>
@@ -6,7 +6,7 @@
   <% end %>
   <div class="call-modal text-center">
     <div class="text-center mt-5">
-      <h1><%= @space.user.first_name.capitalize %></h1>
+      <h1 class="text-white"><%= @space.user.first_name.capitalize %></h1>
       <p>Initiating call...</p>
     </div>
     <div class="pulse">

@@ -20,7 +20,7 @@
   </div>
   <%= simple_form_for [ @incident, @message ],
     remote: true do |f| %>
-    <%= f.input :content, label: false, placeholder: "Message" %>
+    <%= f.input :content, label: false, placeholder: "Type a message" %>
     <%= f.submit class: "btn btn-warning w-100 rounded-pill" %>
   <% end %>
   <%# <%= link_to 'Back to Map', incident_path(@incident), class: "mt-3" %>
