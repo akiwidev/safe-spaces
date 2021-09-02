@@ -45,9 +45,9 @@
                             <p><%= link_to ('<i class="fas fa-edit"></i>').html_safe, edit_space_path(space), class: "pr-3" %></p>
                             <p><%= link_to ('<i class="fas fa-trash-alt"></i>').html_safe, space_path(space), method: :delete, data: { confirm: 'Delete space?' } %></p>
                           </div>
-                        <% end %>
                       </div>
                       <div class="pt-2"><small class="card-title mt-1"><%= space.address %></small></div>
+                        <% end %>
                       <p class="card-text mt-2 py-3 border-top"><%= space.conditions %></p>
                     </div>
                   </div>
