@@ -6,11 +6,19 @@
   <% end %>
   <div class="call-modal text-center">
     <div class="text-center mt-5">
+    <% if @space.user == current_user %>
+      <h1 class="text-white"><%= @incident.user.first_name.capitalize %></h1>
+    <% else %>
       <h1 class="text-white"><%= @space.user.first_name.capitalize %></h1>
+    <% end %>
       <p>Initiating call...</p>
     </div>
     <div class="pulse">
-      <%= cl_image_tag(@space.user.photo.key, :alt => "profile photo", :class => "") %>
+      <% if @space.user == current_user %>
+        <%= cl_image_tag(@incident.user.photo.key, :alt => "profile photo", :class => "") %>
+      <% else %>
+        <%= cl_image_tag(@space.user.photo.key, :alt => "profile photo", :class => "") %>
+      <% end %>
     </div>
   </div>
 </div>
