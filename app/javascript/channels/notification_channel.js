@@ -1,6 +1,7 @@
 import consumer from "./consumer";
 
 const initNotificationCable = () => {
+  // const notificationsContainer = document.querySelector('.notification-box');
   const notificationsContainer = document.getElementById('notification-container');
   // const notificationContent = document.querySelector('.notification-content');
 
@@ -20,8 +21,17 @@ const initNotificationCable = () => {
         // Called when the subscription is ready for use on the server
       },
       received(data) {
-        console.log(data);
-        // notificationsContainer.insertAdjacentHTML('afterbegin', `You got a notification from ${data.user.first_name.capitalize}`);
+        // console.log(data);
+        // notificationsContainer.insertAdjacentHTML('beforebegin', `
+        //   <div id= "notification-container">
+        //     <div class="notification-box mb-3">
+        //     </div>
+        //     <div class="notification-content">
+        //       <p>Someone is about to start a trip. Are you at home? If not, make your place unavailable</p>
+        //     </div>
+        //   </div>
+        // `);
+          // ${ cl_image_tag(data.space.user.photo.key, alt: "profile photo")  }
         // notificationsContainer.scroll(0, notificationsContainer.scrollHeight);
       },
     });

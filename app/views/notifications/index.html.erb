@@ -9,7 +9,7 @@
       <% if notification.incident.present? %>
         <%= link_to cl_image_tag(notification.incident.user.photo.key, alt: "profile photo"), user_path(notification.incident.user) %>
       <% else %>
-        <%= link_to cl_image_tag(notification.params[:space].user.photo.key, alt: "profile photo"), user_path(notification.params[:space].user.photo) %>
+        <%= image_tag "placeholder2.jpg", alt: "placefolder profile photo" %>
       <% end %>
       <div class="notification-content">
         <% if notification.unread? %>

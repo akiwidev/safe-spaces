@@ -1,3 +1,9 @@
+<div class="p-2 mb-2 bg-warning text-dark">
+  <i class="fas fa-exclamation-triangle"></i>
+  This app is still in development.
+  Please feel free to sign up and have a look around,
+  but currently there are no safe spaces available.
+</div>
 <div class="container form-login mb-5">
   <div class="row justify-content-center">
     <div class="col-12">
@@ -29,7 +35,7 @@
           <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-          <%= f.input :photo, 
+          <%= f.input :photo,
                 as: :file,
                 label: 'Add a profile photo' %>
         </div>
