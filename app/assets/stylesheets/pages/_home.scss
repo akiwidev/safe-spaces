@@ -51,6 +51,17 @@ body, html {
   margin-bottom: 1rem;
 }
 
+.help-box {
+  p {
+    color: rgba(250,250,250,0.67);
+  }
+
+  h2 {
+    color: white;
+    font-weight: bold;
+  }
+}
+
 // @media (max-height: 668px) {
 //   .content {
 //     height: 29.4vh;
