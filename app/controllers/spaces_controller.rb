@@ -55,7 +55,7 @@ class SpacesController < ApplicationController
         lat: @space.latitude,
         lng: @space.longitude,
         infoWindow: { content: render_to_string(partial: "/spaces/info_window", locals: { space: @space }) },
-        image_url: Cloudinary::Utils.cloudinary_url(@space.user.photo.key)
+        image_url: helpers.asset_url(Cloudinary::Utils.cloudinary_url(@space.user.photo.key))
       }
     ]
     set_space_markers
@@ -70,13 +70,13 @@ class SpacesController < ApplicationController
     # @notification.deliver(User.all)
     @spaces.each do |space|
       @notification.deliver(User.where(spaces: space))
-      User.where(spaces: space).each do |user|
-        # raise if user == User.find(10)
-      NotificationChannel.broadcast_to(
-        user,
-        render_to_string(partial: "notifications/notification", locals: { notification: @notification })
-      )
-      end
+      # User.where(spaces: space).each do |user|
+      #   # raise if user == User.find(10)
+      # # NotificationChannel.broadcast_to(
+      # #   user,
+      # #   render_to_string(partial: "notifications/notification", locals: { notification: @notification })
+      # # )
+      # end
     end
   end
 
@@ -149,7 +149,7 @@ class SpacesController < ApplicationController
         lat: space.latitude,
         lng: space.longitude,
         info_window: render_to_string(partial: "/spaces/info_window", locals: { space: space }),
-        image_url: Cloudinary::Utils.cloudinary_url(space.user.photo.key)
+        image_url: helpers.asset_url(Cloudinary::Utils.cloudinary_url(space.user.photo.key))
       }
     end
   end
