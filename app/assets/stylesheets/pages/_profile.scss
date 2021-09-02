@@ -28,15 +28,18 @@
 }
 
 .user-bio {
-  background: white;
+  background: rgb(54, 53, 66);
   padding: 1rem 2rem;
   border-radius: 0 0 1rem 1rem;
   width: 80%;
   height: 100%;
+  color: rgba(250,250,250,1);
+  box-shadow: 0 0.25rem 0.5rem rgba(10,10,10,0.4);
 
   h3 {
     font-family: 'Bellota Text', cursive;
     font-weight: bold;
+    background: linear-gradient(transparent 30%, #e5989b98 10%, #e5989b98 90%, transparent 90%);
   }
 }
 
@@ -45,9 +48,8 @@
     font-family: 'Bellota Text', cursive;
     font-size: 2.5rem;
     font-weight: bold;
-    background: linear-gradient(transparent 30%, #E5989B 10%, #E5989B 90%, transparent 90%);
-    background-position-x: 50%;
-    color: #323232;
+    background: linear-gradient(transparent 30%, #e5989b98 10%, #e5989b98 90%, transparent 90%);
+    color: #fafafa;
   }
 }
 
