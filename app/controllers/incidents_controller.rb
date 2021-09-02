@@ -31,9 +31,9 @@ class IncidentsController < ApplicationController
       lat: @incident.space.latitude,
       lng: @incident.space.longitude,
       info_window: render_to_string(partial: "/spaces/info_window", locals: { space: @space }),
-      image_url: Cloudinary::Utils.cloudinary_url(@space.user.photo.key)
+      image_url: Cloudinary::Utils.cloudinary_url(@space.user.photo.key, secure: true)
     }]
-    @usermarker = [{ image_url: Cloudinary::Utils.cloudinary_url(@user.photo.key) }]
+    @usermarker = [{ image_url: Cloudinary::Utils.cloudinary_url(@user.photo.key, secure: true) }]
     @message = Message.new
     set_koban_markers
   end
