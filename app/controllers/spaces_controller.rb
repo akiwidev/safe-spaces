@@ -55,7 +55,7 @@ class SpacesController < ApplicationController
         lat: @space.latitude,
         lng: @space.longitude,
         infoWindow: { content: render_to_string(partial: "/spaces/info_window", locals: { space: @space }) },
-        image_url: Cloudinary::Utils.cloudinary_url(@space.user.photo.key)
+        image_url: Cloudinary::Utils.cloudinary_url(@space.user.photo.key, secure: true)
       }
     ]
     set_space_markers
@@ -149,7 +149,7 @@ class SpacesController < ApplicationController
         lat: space.latitude,
         lng: space.longitude,
         info_window: render_to_string(partial: "/spaces/info_window", locals: { space: space }),
-        image_url: Cloudinary::Utils.cloudinary_url(space.user.photo.key)
+        image_url: Cloudinary::Utils.cloudinary_url(space.user.photo.key, secure: true)
       }
     end
   end
