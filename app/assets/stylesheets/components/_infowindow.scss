@@ -20,8 +20,9 @@ body {
 
 .profile-card {
   position: relative;
-  width: 13rem;
+  width: 12rem;
   background-color: white;
+  height: max-content;
 }
 
 .profile-background {
@@ -55,7 +56,7 @@ body {
   border-radius: 50%;
   position: absolute;
   bottom: 4rem;
-  right: 1rem;
+  left: 1rem;
   border: 2px solid white;
   box-shadow: 0 2px 4px rgba(10,10,10,0.3);
   position: relative;
@@ -83,7 +84,6 @@ body {
 
 .profile-body {
   width: 12rem;
-  margin: 1rem 0;
   text-align: center;
   font-family: "Open Sans", sans-serif;
   letter-spacing: 0.05rem;
@@ -94,6 +94,10 @@ body {
 .body-intro {
   border-top: 3px solid rgba(255, 86, 93, 0.4);
   padding-top: 1em;
+
+  p {
+    margin: 0 auto;
+  }
 }
 
 .profile-helped {
