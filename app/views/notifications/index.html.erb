@@ -1,6 +1,7 @@
 <div class="container flex-column">
-  <div class="hero-text mb-5 text-center" style="max-width: 18rem">
+  <div class="hero-text mb-2 text-center" style="max-width: 18rem">
     <h1 style="font-size: 3rem">Notifications</h1>
+    <p style="color: white; opacity: 67%;"><%= @notifications.unread.count %> unread notifications</p>
   </div>
   <div id= "notification-container">
   <% @notifications.each do |notification| %>
@@ -12,9 +13,9 @@
       <% end %>
       <div class="notification-content">
         <% if notification.unread? %>
-          <p><%= notification.to_notification.message %><%= link_to " here", notification_path(notification), style: "font-weight: bold" %></p>
+          <p style="color: white"><%= notification.to_notification.message %><%= link_to " here", notification_path(notification), style: "font-weight: bold" %></p>
         <% else %>
-          <p><%= notification.to_notification.message %><%= link_to " here", notification_path(notification), style: "opacity: 60%" %></p>
+          <p style="opacity: 50%"><%= notification.to_notification.message %><%= link_to " here", notification_path(notification), style: "font-weight: bold; opacity: 90%" %></p>
         <% end %>
       </div>
   </div>

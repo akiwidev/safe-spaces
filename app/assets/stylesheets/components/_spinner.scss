@@ -7,13 +7,27 @@
   position: absolute;
   top: 50%;
   right: 50%;
-  text-indent: -9999em;
+  // text-indent: -9999em;
   -webkit-animation: load5 1.1s infinite ease;
   animation: load5 1.1s infinite ease;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
 }
+
+.load-text {
+  text-align: center;
+  position: relative;
+  left: 0;
+  width: 15rem;
+
+  p {
+    color: #ffffff;
+    transform: translate(-40%, -200%);
+    width: 15rem;
+  }
+}
+
 @-webkit-keyframes load5 {
   0%,
   100% {

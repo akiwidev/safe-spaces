@@ -5,7 +5,6 @@
 
 .navbar-nav {
   align-items: flex-end;
-  margin-top: 1rem;
   line-height: 2rem;
 }
 
@@ -15,4 +14,10 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+@media (min-width: 768px) {
+  .navbar-lewagon {
+    margin-bottom: 2rem;
+  }
 }

@@ -17,7 +17,6 @@ body, html {
 }
 
 .fullscreen {
-    // background: url(homepage.jpg) no-repeat center center fixed;
     background: transparent;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -62,8 +61,8 @@ body, html {
   }
 }
 
-// @media (max-height: 668px) {
-//   .content {
-//     height: 29.4vh;
-//   }
-// }
+@media (min-width: 768px) {
+  .fullscreen {
+    padding-top: 1rem;
+  }
+}
