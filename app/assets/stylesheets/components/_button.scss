@@ -89,14 +89,13 @@
 
 .button-close {
   background-color: transparent;
-  margin: none;
-  padding: none;
-  position:fixed;
-  top: 10px;
-  right: 10px;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
+  position: fixed;
+  top: 0.625rem;
+  right: 0.625rem;
+  width: 1.875rem;
+  height: 1.875rem;
+  border: transparent;
+  color: white;
 }
 
 .button-emergency-call {
@@ -159,16 +158,10 @@
   border: 3px solid #00d7c3;
 }
 
-
-//  width: 8rem;
-//   padding-top: 10px;
-//   padding-bottom: 10px;
-//   text-align: center;
-//   color: #000;
-//   text-transform: uppercase;
-//   font-weight: 600;
-//   margin-left: 20px;
-//   margin-bottom: 20px;
-//   cursor: pointer;
-//   display: inline-block;
-//   background-color: #E5989B;
+.btn-warning {
+  color: #212529;
+  background-color: #E5989B;
+  border-color: transparent;
+  color: white;
+  font-weight: bold;
+}

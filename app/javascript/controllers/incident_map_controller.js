@@ -58,7 +58,7 @@ export default class extends Controller {
   setupMap = (center) => {
     const map = new mapboxgl.Map({
       container: "incident_map",
-      style: "mapbox://styles/mapbox/streets-v11",
+      style: "mapbox://styles/ck3nn3dy/cksye634q082b18oeymwnwn0d",
       center: center,
       zoom: 15
     })
