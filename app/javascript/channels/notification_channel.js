@@ -1,6 +1,7 @@
 import consumer from "./consumer";
 
 const initNotificationCable = () => {
+  // const notificationsContainer = document.querySelector('.notification-box');
   const notificationsContainer = document.getElementById('notification-container');
   // const notificationContent = document.querySelector('.notification-content');
 
@@ -21,7 +22,10 @@ const initNotificationCable = () => {
       },
       received(data) {
         console.log(data);
-        // notificationsContainer.insertAdjacentHTML('afterbegin', `You got a notification from ${data.user.first_name.capitalize}`);
+        notificationsContainer.insertAdjacentHTML('beforebegin', `<div class="notification-content">
+        <p>Someone is about to start a trip. Are you at home? If not, make your place unavailable</p>
+        </div>`);
+          // ${ cl_image_tag(data.space.user.photo.key, alt: "profile photo")  }
         // notificationsContainer.scroll(0, notificationsContainer.scrollHeight);
       },
     });
