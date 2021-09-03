@@ -15,10 +15,14 @@
 #messages {
   overflow-y: scroll;
   height: 100%;
-  width: 100%;
-  padding-left: 1rem;
+  width: 16.65rem;
+  padding: 0.5rem 1rem 0 1rem;
   border: 1px solid rgba(10, 10, 10, 0.2);
   border-bottom: transparent;
   padding-top: 0.5rem;
   color: white;
+}
+
+#message_content {
+  width: 16.65rem;
 }
