@@ -23,7 +23,7 @@ class SpacesController < ApplicationController
         end
       end
       @space = @user.spaces[0]
-      @notification = SpaceNotification.with(space: @space)
+      @notification = SpaceNotification.with(space: @space, user: @user, notification: render_to_string(partial: "notifications/notification_current_user" ))
       # @notification.deliver(User.all)
       @spaces.each do |space|
         @notification.deliver(User.where(spaces: space))
