@@ -22,7 +22,22 @@ const initNotificationCable = () => {
       },
       received(data) {
         console.log(data);
-        notificationsContainer.insertAdjacentHTML('beforebegin', `
+        const unreadInside = document.getElementById('unread-inside');
+        if (unreadInside) { unreadInside.innerText = parseInt(unreadInside.innerText, 10) + 1 }
+        if (data.incident) {
+          notificationsContainer.insertAdjacentHTML('afterbegin', `
+          <div id= "notification-container">
+            <div class="notification-box mb-3">
+              ${data.photo}
+              <div class="notification-content">
+                <p style="color: white">${capitalize(data.user.first_name)} is coming to your safe space! See her journey <strong><a href="/incidents/${data.incident.id}">here</a></strong></p>
+              </div>
+            </div>
+          </div>
+        `);
+        } else {
+
+          notificationsContainer.insertAdjacentHTML('afterbegin', `
           <div id= "notification-container">
             <div class="notification-box mb-3">
               <img src="images/placeholder2.jpg" alt="placeholder profile photo">
@@ -31,14 +46,17 @@ const initNotificationCable = () => {
               </div>
             </div>
           </div>
-        `);
-        const unreadInside = document.getElementById('unread-inside');
-        if (unreadInside) { unreadInside.innerText = parseInt(unreadInside.innerText, 10) + 1 }
+          `);
+        }
           // ${ cl_image_tag(data.space.user.photo.key, alt: "profile photo")  }
         // notificationsContainer.scroll(0, notificationsContainer.scrollHeight);
       },
     });
   }
+}
+
+function capitalize(word) {
+  return word[0].toUpperCase() + word.slice(1).toLowerCase();
 }
 
 export { initNotificationCable };
