@@ -1,0 +1,37 @@
+.end-screen {
+  height: 100vh;
+  background-size: cover;
+  background-position: 70%;
+  // background-color: #1A2637;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("https://www.safespacesjp.com/assets/background-1d040e26e55137540f46abbd6b84a50e9bd88b07ba451f03a6d3a6cd5c412ed8.jpg");
+  text-align: center;
+  margin: 0 auto;
+  color: white;
+   font-family: 'Bellota Text', cursive;
+
+  h1{
+    font-size: 2.5rem;
+    font-weight: 50px;
+    margin-bottom: 100px;
+
+  }
+  p {
+
+    font-size: 1.5rem;
+    font-weight: 30px;
+    margin-top: 50px;
+    //  margin-bottom: 50px;
+    text-align: left;
+
+  }
+}
+
+.end-screen-options {
+    background-color: rgba(121, 7, 7, 0.5);
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    border-radius: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
