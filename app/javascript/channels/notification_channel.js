@@ -27,7 +27,7 @@ const initNotificationCable = () => {
             <div class="notification-box mb-3">
               <img src="images/placeholder2.jpg" alt="placeholder profile photo">
               <div class="notification-content">
-                <p style="color: white">Someone is about to start a trip. Are you at home? If not, make your place unavailable ${data.notification}</p>
+                <p style="color: white">Someone is about to start a trip. Are you at home? If not, make your place unavailable <strong>${data.notification}</strong></p>
               </div>
             </div>
           </div>
