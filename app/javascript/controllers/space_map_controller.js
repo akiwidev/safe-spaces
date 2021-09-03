@@ -21,7 +21,8 @@ export default class extends Controller {
       const element = document.createElement('span');
       element.className = 'jpic jpic-keisatsu';
       element.style.fontSize = '30px';
-      element.style.color = '#D42A44';
+      element.style.color = 'rgb(255, 0, 0)';
+      element.style.textShadow = '0 0.15rem 0.05rem rgba(10,10,10,0.6)';
 
       new mapboxgl.Marker(element)
         .setLngLat([ kobanmarker.lng, kobanmarker.lat ])
