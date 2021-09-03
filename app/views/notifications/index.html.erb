@@ -1,7 +1,7 @@
 <div class="container flex-column">
   <div class="hero-text mb-2 text-center" style="max-width: 18rem">
     <h1 style="font-size: 3rem">Notifications</h1>
-    <p style="color: white; opacity: 67%;"><%= @notifications.unread.count %> unread notifications</p>
+    <p style="color: white; opacity: 67%;"><span id="unread-inside"><%= @notifications.unread.count %></span> unread notifications</p>
   </div>
   <div id= "notification-container">
   <% @notifications.each do |notification| %>
