@@ -18,7 +18,7 @@ class IncidentsController < ApplicationController
     @incident.space = @space
 
     if @incident.save
-      @notification = CommentNotification.with(incident: @incident)
+      @notification = CommentNotification.with(incident: @incident, user: @incident.user, photo: render_to_string(partial: "notifications/notification"), notification: render_to_string(partial: "notifications/notification_current_user"))
       @notification.deliver(@space.user)
       redirect_to incident_path(@incident, lng: params[:lng], lat: params[:lat])
     end
