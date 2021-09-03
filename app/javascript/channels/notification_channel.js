@@ -32,6 +32,8 @@ const initNotificationCable = () => {
             </div>
           </div>
         `);
+        const unreadInside = document.getElementById('unread-inside');
+        if (unreadInside) { unreadInside.innerText = parseInt(unreadInside.innerText, 10) + 1 }
           // ${ cl_image_tag(data.space.user.photo.key, alt: "profile photo")  }
         // notificationsContainer.scroll(0, notificationsContainer.scrollHeight);
       },
