@@ -1,24 +1,25 @@
-<div class="end-screen container">
+<div class="end-screen">
   <div class="">
     <h1>We are glad you are safe</h1>
-    <div class="end-screen-options">
-      <div class="d-flex align-items-center my-0">
-        <p>Call your emergency contact
-          <div class="button-emergency-call">
-            <%= link_to "tel:#{@user.emergency_num}." do %>
-              <i class="fas fa-phone-alt"></i>
-            <% end %>
-          </div>
-        </p>
+    <div class="end-card">
+      <p class="end-card__info__one">Call emergency contact </p>
+      <div class="button-emergency-call">
+        <%= link_to "tel:#{@user.emergency_num}." do %>
+          <i class="fas fa-phone-alt"></i>
+        <% end %>
       </div>
-      <p>Call the police 👮🏻‍♀️</p>
-      <div class="d-flex justify-content-between">
-        <p>Head back home
-          <%= link_to space_path(current_user.spaces.first) do %>
-            <p class="text-decoration-none"><i class="fas fa-home"></i></p>
-          <% end %>
-        </p>
+    </div>
+    <div class="end-card">
+      <p class="end-card__info__one">Call the police </p>
+      <div class="button-emergency-call"> 
+        <p>👮🏻‍♀️</p>
       </div>
+    </div>
+    <div class="end-card">
+      <p class="end-card__info__one">Head back home   </p>
+      <%= link_to space_path(current_user.spaces.first) do %>
+        <p class="button-emergency-call"><i class="fas fa-home"></i></p>
+      <% end %>
     </div>
   </div>
 </div>
